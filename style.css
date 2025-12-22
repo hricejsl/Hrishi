@@ -2602,3 +2602,73 @@ p {
 .navbar ul li {
     margin: 0 15px;
 }
+
+/* Sticky logo only */
+.sticky-logo {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background-color: #000;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.sticky-logo img {
+    height: 50px;
+}
+
+/* Normal Menu */
+.main_menu {
+    width: 100%;
+    background-color: #111;
+    padding: 10px 0;
+}
+
+.main_menu ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.main_menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    white-space: nowrap;
+}
+
+/* Dropdowns */
+.main_menu ul li ul {
+    display: none;
+    position: absolute;
+    background-color: #222;
+    margin-top: 10px;
+    padding: 10px 0;
+    min-width: 150px;
+    list-style: none;
+    z-index: 998;
+}
+
+.main_menu ul li:hover > ul {
+    display: block;
+}
+
+.main_menu ul li ul li {
+    padding: 5px 20px;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 992px) {
+    .main_menu ul {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+    .main_menu ul li a {
+        font-size: 14px;
+    }
+}
