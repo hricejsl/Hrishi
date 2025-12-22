@@ -146,3 +146,71 @@ img{max-width:100%;height:auto;display:block;}
 .newsletter_black .footer-newsletter input{width:300px;max-width:100%;padding:12px 20px;border:2px solid #fff;border-radius:50px;background:rgba(255,255,255,0.1);color:#fff;font-size:14px;outline:none;}
 .newsletter_black .footer-newsletter button{padding:12px 30px;border-radius:50px;border:none;background:#a8741a;color:#fff;font-size:14px;font-weight:600;cursor:pointer;transition:0.3s ease;}
 .newsletter_black .footer-newsletter button:hover{background:#fff;color:#000;}
+
+/* =================== Global Fixes =================== */
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scroll / white space */
+    width: 100%;
+    height: 100%;
+}
+
+/* Ensure all images and banners fit the screen */
+img, .slider_area, .banner_fullwidth, .single_slider, .product_thumb, .blog_thumb {
+    max-width: 100%;
+    width: 100%;
+    display: block;
+}
+
+/* Fix sliders and sections that are causing overflow */
+.slider_area .row,
+.banner_fullwidth .row,
+.product_container,
+.custom-row {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Make main containers fit screen */
+.container, .container-fluid {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+/* Fix any negative margins causing white space */
+.p_section1 .slick-list,
+.p_bottom.p_section1 .slick-list {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+/* Optional: fix header & footer width issues */
+header, footer, .main_menu_inner, .header_bottom, .header_middel {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Extra precaution for black sections */
+.home_black_version,
+.banner_black,
+.product_black_section,
+.blog_black,
+.newsletter_black {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Optional: hide extra scrollbar if still visible */
+body::-webkit-scrollbar {
+    height: 0px;
+    width: 0px;
+}
