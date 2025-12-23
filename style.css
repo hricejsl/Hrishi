@@ -2501,3 +2501,17 @@ p {
   background: #a8741a;
   color: #fff;
 }
+.cart_popup {
+    position: fixed;
+    top: 0;
+    right: -400px; /* hidden initially */
+    width: 350px;
+    height: 100%;
+    background: #fff;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+    transition: right 0.4s ease;
+    z-index: 9999;
+}
+.cart_popup.active {
+    right: 0;
+}
