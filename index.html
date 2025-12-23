@@ -19,6 +19,7 @@
 <body>
     <div class="home_black_version">
         <header class="header_area header_black">
+
             <!-- header top starts -->
             <div class="header_top">
                 <div class="container">
@@ -38,29 +39,13 @@
                             <div class="top_right text-right">
                                 <ul>
                                     <li class="language">
-                                        <a href="#">English <i class="ion-chevron-down"></i></a>
-                                        <ul class="dropdown_language">
-                                            <li><a href="#">French</a></li>
-                                            <li><a href="#">Germany</a></li>
-                                            <li><a href="#">Hindi</a></li>
-                                        </ul>
+                                        <a href="#">English</a>
                                     </li>
                                     <li class="currency">
-                                        <a href="#">INR <i class="ion-chevron-down"></i></a>
-                                        <ul class="dropdown_currency">
-                                            <li><a href="#">USD - Dollar</a></li>
-                                            <li><a href="#">EUR - Euro</a></li>
-                                            <li><a href="#">GBP - British Pound</a></li>
-                                        </ul>
+                                        <a href="#">INR</a>
                                     </li>
                                     <li class="top_links">
-                                        <a href="#">My Account <i class="ion-chevron-down"></i></a>
-                                        <ul class="dropdown_links">
-                                            <li><a href="#">Checkout</a></li>
-                                            <li><a href="#">My Account</a></li>
-                                            <li><a href="#">Shopping Cart</a></li>
-                                            <li><a href="#">Wishlist</a></li>
-                                        </ul>
+                                        <a href="#">My Account</a>
                                     </li>
                                 </ul>
                             </div>
@@ -106,117 +91,88 @@
                                 <div class="wishlist_btn">
                                     <a href="#"><i class="ion-heart"></i></a>
                                 </div>
-                                <div class="cart_link">
-                                    <a href="#"><i class="ion-android-cart"></i><span class="cart_text_quantity">Rs.
-                                            67,598</span><i class="ion-chevron-down"></i></a>
-                                    <span class="cart_quantity">2</span>
-
-                                    <!-- Simple Cart Icon -->
-                                          <div class="cart_link">
-                                        < a href="#">
-                                         🛒
-                                      </a>
-                                   </div>
+                                <div class="cart_icon">
+                                    <!-- Single 🛒 icon -->
+                                    <a href="#" id="cartPopupBtn">🛒</a>
+                                    <div id="cartPopup" class="cart_popup">
+                                        <div class="cart_header">
+                                            <h4>Your Cart</h4>
+                                            <span id="closeCartPopup">✖</span>
+                                        </div>
+                                        <div class="cart_items">
+                                            <!-- Items will be dynamically inserted here -->
+                                            <div class="cart_item">
+                                                <img src="images/products/sample1.jpg" alt="">
+                                                <div class="item_info">
+                                                    <p>Product Name</p>
+                                                    <div class="quantity_control">
+                                                        <button class="decrease">-</button>
+                                                        <input type="text" value="1">
+                                                        <button class="increase">+</button>
+                                                    </div>
+                                                    <p>Rs. 12,000</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="cart_footer">
+                                            <button class="clear_all">Clear All</button>
+                                            <a href="https://wa.me/9705456002" class="checkout_whatsapp">Checkout via WhatsApp</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
             <!-- header middle ends -->
 
-            <!-- Header Bottom Starts -->
-<div class="header_bottom">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-12">
-
-                <!-- Sticky Logo -->
-                <div class="logo_sticky sticky-logo">
-                    <a href="index.html"><img src="images/logo/logo-ash.png" alt="Logo"></a>
+            <!-- header bottom starts -->
+            <div class="header_bottom">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-12">
+                            <div class="logo_sticky sticky-logo">
+                                <a href="index.html"><img src="images/logo/logo-ash.png" alt="Logo"></a>
+                            </div>
+                            <div class="main_menu">
+                                <nav>
+                                    <ul>
+                                        <li class="active"><a href="index.html">Home</a></li>
+                                        <li><a href="category.html">Category</a></li>
+                                        <li><a href="uncut-diamonds.html">Uncut Diamonds</a></li>
+                                        <li><a href="about.html">About Us</a></li>
+                                        <li><a href="special-collection.html">Special Collection</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-                <!-- Normal Menu -->
-                <div class="main_menu">
-                    <nav>
-                        <ul>
-                            <li class="active">
-                                <a href="index.html">Home <i class="ion-chevron-down"></i></a>
-                                <ul class="sub_menu">
-                                    <li><a href="#banner">Banner</a></li>
-                                    <li><a href="#featured">Featured</a></li>
-                                    <li><a href="#collection">Collection</a></li>
-                                    <li><a href="#best-selling">Best Selling</a></li>
-                                    <li><a href="#news">News</a></li>
-                                    <li><a href="#blog">Blog</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="category.html">Category <i class="ion-chevron-down"></i></a>
-                                <ul class="mega_menu">
-                                    <li>
-                                        <a href="category-women.html">Women</a>
-                                        <ul>
-                                            <li><a href="earring.html">Earring</a></li>
-                                            <li><a href="pendant.html">Pendant</a></li>
-                                            <li><a href="rings.html">Rings</a></li>
-                                            <li><a href="chain.html">Chain</a></li>
-                                            <li><a href="bangles.html">Bangles</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="category-men.html">Men</a>
-                                        <ul>
-                                            <li><a href="ring.html">Ring</a></li>
-                                            <li><a href="pendant-men.html">Pendant</a></li>
-                                            <li><a href="bracelet.html">Bracelet</a></li>
-                                            <li><a href="chain-men.html">Chain</a></li>
-                                            <li><a href="gemstone.html">Gemstone</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="category-other.html">Other</a>
-                                        <ul>
-                                            <li><a href="platinum.html">Platinium</a></li>
-                                            <li><a href="silver.html">Silver</a></li>
-                                            <li><a href="coins.html">Coins</a></li>
-                                            <li><a href="gift-card.html">Gift Card</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="uncut-diamonds.html">Uncut Diamonds <i class="ion-chevron-down"></i></a>
-                                <ul class="sub_menu pages">
-                                    <li><a href="earring.html">Earrings</a></li>
-                                    <li><a href="pendant.html">Pendant</a></li>
-                                    <li><a href="rings.html">Ring</a></li>
-                                    <li><a href="bracelet.html">Bracelet</a></li>
-                                    <li><a href="necklace-set.html">Necklace Set</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="about.html">About Us</a></li>
-                            <li>
-                                <a href="special-collection.html">Special Collection <i class="ion-chevron-down"></i></a>
-                                <ul class="sub_menu pages">
-                                    <li><a href="gemstone.html">Gemstone</a></li>
-                                    <li><a href="gold.html">Gold</a></li>
-                                    <li><a href="rose-gold.html">Rose Gold</a></li>
-                                    <li><a href="silver.html">Silver</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-
             </div>
-        </div>
-    </div>
-</div>
-<!-- Header Bottom Ends -->
+            <!-- header bottom ends -->
+
         </header>
 
+        <!-- Optional JS for Cart Popup -->
+        <script>
+            const cartBtn = document.getElementById('cartPopupBtn');
+            const cartPopup = document.getElementById('cartPopup');
+            const closeCartPopup = document.getElementById('closeCartPopup');
+
+            cartBtn.addEventListener('click', () => {
+                cartPopup.style.display = 'block';
+            });
+
+            closeCartPopup.addEventListener('click', () => {
+                cartPopup.style.display = 'none';
+            });
+        </script>
+
+    </div>
+</body>
+
+</html>
         <!-- slider section starts -->
         <div class="slider_area slider_black owl-carousel">
             <div class="single_slider" data-bgimg="images/slider/1.png">
