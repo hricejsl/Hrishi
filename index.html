@@ -19,7 +19,6 @@
 <body>
     <div class="home_black_version">
         <header class="header_area header_black">
-
             <!-- header top starts -->
             <div class="header_top">
                 <div class="container">
@@ -59,7 +58,6 @@
             <div class="header_middel">
                 <div class="container">
                     <div class="row align-items-center">
-
                         <div class="col-lg-5">
                             <div class="home_contact">
                                 <div class="contact_icone">
@@ -91,34 +89,8 @@
                                 <div class="wishlist_btn">
                                     <a href="#"><i class="ion-heart"></i></a>
                                 </div>
-                                <div class="cart_icon">
-                                    <!-- Single 🛒 icon -->
-                                    <a href="#" id="cartPopupBtn">🛒</a>
-                                    <div id="cartPopup" class="cart_popup">
-                                        <div class="cart_header">
-                                            <h4>Your Cart</h4>
-                                            <span id="closeCartPopup">✖</span>
-                                        </div>
-                                        <div class="cart_items">
-                                            <!-- Items will be dynamically inserted here -->
-                                            <div class="cart_item">
-                                                <img src="images/products/sample1.jpg" alt="">
-                                                <div class="item_info">
-                                                    <p>Product Name</p>
-                                                    <div class="quantity_control">
-                                                        <button class="decrease">-</button>
-                                                        <input type="text" value="1">
-                                                        <button class="increase">+</button>
-                                                    </div>
-                                                    <p>Rs. 12,000</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="cart_footer">
-                                            <button class="clear_all">Clear All</button>
-                                            <a href="https://wa.me/9705456002" class="checkout_whatsapp">Checkout via WhatsApp</a>
-                                        </div>
-                                    </div>
+                                <div class="cart_link">
+                                    <a href="#" id="cartTrigger">🛒</a>
                                 </div>
                             </div>
                         </div>
@@ -127,7 +99,7 @@
             </div>
             <!-- header middle ends -->
 
-            <!-- header bottom starts -->
+            <!-- Header Bottom Starts -->
             <div class="header_bottom">
                 <div class="container">
                     <div class="row align-items-center">
@@ -135,6 +107,7 @@
                             <div class="logo_sticky sticky-logo">
                                 <a href="index.html"><img src="images/logo/logo-ash.png" alt="Logo"></a>
                             </div>
+
                             <div class="main_menu">
                                 <nav>
                                     <ul>
@@ -150,28 +123,32 @@
                     </div>
                 </div>
             </div>
-            <!-- header bottom ends -->
-
+            <!-- Header Bottom Ends -->
         </header>
 
-        <!-- Optional JS for Cart Popup -->
-        <script>
-            const cartBtn = document.getElementById('cartPopupBtn');
-            const cartPopup = document.getElementById('cartPopup');
-            const closeCartPopup = document.getElementById('closeCartPopup');
+        <!-- CART POPUP -->
+        <div class="cart_popup_overlay" id="cartPopup">
+            <div class="cart_popup_header">
+                <h3>My Cart</h3>
+                <span class="close_cart" id="closeCart">&times;</span>
+            </div>
+            <div class="cart_items_container">
+                <!-- Cart items dynamically inserted here -->
+            </div>
+            <div class="cart_total_section">
+                <div class="total_row">
+                    <span>Total:</span>
+                    <span id="cartTotal">Rs. 0</span>
+                </div>
+            </div>
+            <div class="cart_buttons">
+                <a href="#" id="whatsappCheckout">Checkout via WhatsApp</a>
+                <a href="#" id="clearCart">Clear All</a>
+            </div>
+        </div>
 
-            cartBtn.addEventListener('click', () => {
-                cartPopup.style.display = 'block';
-            });
-
-            closeCartPopup.addEventListener('click', () => {
-                cartPopup.style.display = 'none';
-            });
-        </script>
-
-    </div>
+<script src="main.js"></script>
 </body>
-
 </html>
         <!-- slider section starts -->
         <div class="slider_area slider_black owl-carousel">
