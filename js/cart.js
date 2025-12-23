@@ -1,114 +1,126 @@
-// ======= CART DATA =======
-let cart = [];
-
-// ======= DOM ELEMENTS =======
+// ======= CART POPUP OPEN / CLOSE =======
 const cartPopup = document.getElementById('cartPopup');
-const cartItems = document.getElementById('cartItems');
-const cartSubtotal = document.getElementById('cartSubtotal');
 const openCartBtn = document.getElementById('openCart');
 const closeCartBtn = document.getElementById('closeCart');
-const clearCartBtn = document.getElementById('clearCart');
-const checkoutBtn = document.getElementById('checkoutBtn');
 
-// ======= OPEN / CLOSE CART POPUP =======
 openCartBtn.addEventListener('click', () => {
-    cartPopup.style.display = 'block';
-    renderCart();
+    cartPopup.classList.add('active');
 });
 
 closeCartBtn.addEventListener('click', () => {
-    cartPopup.style.display = 'none';
+    cartPopup.classList.remove('active');
 });
 
-// ======= ADD PRODUCT TO CART =======
-function addToCart(product) {
-    const existing = cart.find(item => item.id === product.id);
-    if (existing) {
-        existing.quantity += 1;
-    } else {
-        cart.push({...product, quantity: 1});
-    }
-    renderCart();
-}
+// ======= CART ITEMS =======
+const cartItemsContainer = document.getElementById('cartItems');
+const cartSubtotal = document.getElementById('cartSubtotal');
 
-// ======= RENDER CART =======
+// Load cart from localStorage
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+// ======= UPDATE CART DISPLAY =======
 function renderCart() {
-    cartItems.innerHTML = ''; // Clear previous
-    let subtotal = 0;
-
-    if(cart.length === 0){
-        cartItems.innerHTML = '<p style="text-align:center; padding:20px;">Your cart is empty!</p>';
-        cartSubtotal.textContent = '0';
-        return;
+    cartItemsContainer.innerHTML = '';
+    if (cart.length === 0) {
+        cartItemsContainer.innerHTML = '<p style="padding: 20px;">Your cart is empty.</p>';
     }
-
-    cart.forEach(item => {
-        subtotal += item.price * item.quantity;
+    cart.forEach((item, index) => {
         const div = document.createElement('div');
-        div.className = 'cart_item';
+        div.classList.add('cart_item');
         div.innerHTML = `
             <div class="cart_img">
-                <img src="${item.image}" alt="${item.name}">
+                <img src="${item.image}" alt="">
             </div>
             <div class="cart_info">
-                <a href="#">${item.name}</a>
-                <div class="quantity_buttons">
-                    <button onclick="decreaseQty(${item.id})">-</button>
-                    <span>${item.quantity}</span>
-                    <button onclick="increaseQty(${item.id})">+</button>
+                <div class="cart_name">${item.name}</div>
+                <div class="cart_qty">
+                    <button class="qty_minus">-</button>
+                    <input type="number" class="quantity_input" value="${item.qty}" min="1">
+                    <button class="qty_plus">+</button>
                 </div>
-                <span>Rs. ${item.price * item.quantity}</span>
+                <div class="price_cart">Rs. ${item.price}</div>
             </div>
             <div class="cart_remove">
-                <button onclick="removeItem(${item.id})">X</button>
+                <button class="remove_item">X</button>
             </div>
         `;
-        cartItems.appendChild(div);
+        cartItemsContainer.appendChild(div);
+
+        // Quantity Buttons
+        const qtyInput = div.querySelector('.quantity_input');
+        div.querySelector('.qty_plus').addEventListener('click', () => {
+            qtyInput.value = parseInt(qtyInput.value) + 1;
+            cart[index].qty = parseInt(qtyInput.value);
+            updateCartTotal();
+            saveCart();
+        });
+        div.querySelector('.qty_minus').addEventListener('click', () => {
+            if (qtyInput.value > 1) {
+                qtyInput.value = parseInt(qtyInput.value) - 1;
+                cart[index].qty = parseInt(qtyInput.value);
+                updateCartTotal();
+                saveCart();
+            }
+        });
+
+        // Remove item
+        div.querySelector('.remove_item').addEventListener('click', () => {
+            cart.splice(index, 1);
+            renderCart();
+            updateCartTotal();
+            saveCart();
+        });
     });
-
-    cartSubtotal.textContent = subtotal;
+    updateCartTotal();
 }
 
-// ======= INCREASE / DECREASE / REMOVE =======
-function increaseQty(id) {
-    const item = cart.find(i => i.id === id);
-    if(item) item.quantity += 1;
-    renderCart();
+// ======= UPDATE TOTAL =======
+function updateCartTotal() {
+    let total = 0;
+    cart.forEach(item => {
+        total += item.price * item.qty;
+    });
+    cartSubtotal.textContent = total.toLocaleString();
 }
 
-function decreaseQty(id) {
-    const item = cart.find(i => i.id === id);
-    if(item) {
-        item.quantity -= 1;
-        if(item.quantity <= 0) removeItem(id);
-    }
-    renderCart();
-}
-
-function removeItem(id) {
-    cart = cart.filter(i => i.id !== id);
-    renderCart();
-}
-
-// ======= CLEAR ALL =======
-clearCartBtn.addEventListener('click', () => {
+// ======= CLEAR CART =======
+document.getElementById('clearCart').addEventListener('click', () => {
     cart = [];
     renderCart();
+    updateCartTotal();
+    saveCart();
 });
 
 // ======= CHECKOUT VIA WHATSAPP =======
-checkoutBtn.addEventListener('click', () => {
-    if(cart.length === 0){
+document.getElementById('checkoutBtn').addEventListener('click', () => {
+    if (cart.length === 0) {
         alert("Cart is empty!");
         return;
     }
-
-    let message = 'Hello! I want to order:\n';
+    let message = "Hello, I want to order:\n";
     cart.forEach(item => {
-        message += `${item.name} x ${item.quantity} = Rs.${item.price * item.quantity}\n`;
+        message += `${item.name} x${item.qty} = Rs.${(item.price * item.qty).toLocaleString()}\n`;
     });
-    message += `Total: Rs.${cart.reduce((a,b)=>a+b.price*b.quantity,0)}`;
-
-    const whatsappUrl = `https://wa.me/9779824479482?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
+    message += `Total: Rs.${cartSubtotal.textContent}`;
+    window.open(`https://wa.me/9779824479482?text=${encodeURIComponent(message)}`, '_blank');
 });
+
+// ======= SAVE CART TO LOCALSTORAGE =======
+function saveCart() {
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+// ======= ADD PRODUCT FUNCTION (example usage) =======
+function addToCart(product) {
+    const existingIndex = cart.findIndex(item => item.name === product.name);
+    if (existingIndex > -1) {
+        cart[existingIndex].qty += 1;
+    } else {
+        cart.push({...product, qty: 1});
+    }
+    renderCart();
+    saveCart();
+}
+
+// ======= INITIAL RENDER =======
+renderCart();
