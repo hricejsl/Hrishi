@@ -1,145 +1,114 @@
-/* ===========================
-   SIMPLE CART SYSTEM
-   =========================== */
+// ======= CART DATA =======
+let cart = [];
 
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+// ======= DOM ELEMENTS =======
+const cartPopup = document.getElementById('cartPopup');
+const cartItems = document.getElementById('cartItems');
+const cartSubtotal = document.getElementById('cartSubtotal');
+const openCartBtn = document.getElementById('openCart');
+const closeCartBtn = document.getElementById('closeCart');
+const clearCartBtn = document.getElementById('clearCart');
+const checkoutBtn = document.getElementById('checkoutBtn');
 
-/* DOM ELEMENTS */
-const cartCount   = document.getElementById("cartCount");
-const cartItems   = document.getElementById("cartItems");
-const cartTotal   = document.getElementById("cartTotal");
-const clearCartBtn = document.getElementById("clearCart");
-const checkoutBtn  = document.getElementById("checkoutBtn");
+// ======= OPEN / CLOSE CART POPUP =======
+openCartBtn.addEventListener('click', () => {
+    cartPopup.style.display = 'block';
+    renderCart();
+});
 
-/* ===========================
-   UPDATE CART COUNT
-   =========================== */
-function updateCartCount() {
-    let totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
-    if (cartCount) cartCount.innerText = totalQty;
-}
+closeCartBtn.addEventListener('click', () => {
+    cartPopup.style.display = 'none';
+});
 
-/* ===========================
-   SAVE CART
-   =========================== */
-function saveCart() {
-    localStorage.setItem("cart", JSON.stringify(cart));
-    updateCartCount();
-}
-
-/* ===========================
-   ADD TO CART
-   =========================== */
-function addToCart(id, name, price, image) {
-    let item = cart.find(p => p.id === id);
-
-    if (item) {
-        item.qty += 1;
+// ======= ADD PRODUCT TO CART =======
+function addToCart(product) {
+    const existing = cart.find(item => item.id === product.id);
+    if (existing) {
+        existing.quantity += 1;
     } else {
-        cart.push({
-            id,
-            name,
-            price,
-            image,
-            qty: 1
-        });
+        cart.push({...product, quantity: 1});
     }
-
-    saveCart();
     renderCart();
 }
 
-/* ===========================
-   CHANGE QUANTITY
-   =========================== */
-function changeQty(id, amount) {
-    let item = cart.find(p => p.id === id);
-    if (!item) return;
-
-    item.qty += amount;
-
-    if (item.qty <= 0) {
-        cart = cart.filter(p => p.id !== id);
-    }
-
-    saveCart();
-    renderCart();
-}
-
-/* ===========================
-   REMOVE ITEM
-   =========================== */
-function removeItem(id) {
-    cart = cart.filter(p => p.id !== id);
-    saveCart();
-    renderCart();
-}
-
-/* ===========================
-   CLEAR CART
-   =========================== */
-if (clearCartBtn) {
-    clearCartBtn.addEventListener("click", () => {
-        cart = [];
-        saveCart();
-        renderCart();
-    });
-}
-
-/* ===========================
-   RENDER CART POPUP
-   =========================== */
+// ======= RENDER CART =======
 function renderCart() {
-    if (!cartItems) return;
+    cartItems.innerHTML = ''; // Clear previous
+    let subtotal = 0;
 
-    cartItems.innerHTML = "";
-    let total = 0;
-
-    if (cart.length === 0) {
-        cartItems.innerHTML = "<p style='text-align:center'>Cart is empty</p>";
-        cartTotal.innerText = "₹0";
+    if(cart.length === 0){
+        cartItems.innerHTML = '<p style="text-align:center; padding:20px;">Your cart is empty!</p>';
+        cartSubtotal.textContent = '0';
         return;
     }
 
     cart.forEach(item => {
-        total += item.price * item.qty;
-
-        cartItems.innerHTML += `
-            <div class="cart_item">
-                <img src="${item.image}" width="60">
-                <div>
-                    <p>${item.name}</p>
-                    <p>₹${item.price}</p>
-                    <div>
-                        <button onclick="changeQty(${item.id}, -1)">−</button>
-                        <span>${item.qty}</span>
-                        <button onclick="changeQty(${item.id}, 1)">+</button>
-                        <button onclick="removeItem(${item.id})">✕</button>
-                    </div>
+        subtotal += item.price * item.quantity;
+        const div = document.createElement('div');
+        div.className = 'cart_item';
+        div.innerHTML = `
+            <div class="cart_img">
+                <img src="${item.image}" alt="${item.name}">
+            </div>
+            <div class="cart_info">
+                <a href="#">${item.name}</a>
+                <div class="quantity_buttons">
+                    <button onclick="decreaseQty(${item.id})">-</button>
+                    <span>${item.quantity}</span>
+                    <button onclick="increaseQty(${item.id})">+</button>
                 </div>
+                <span>Rs. ${item.price * item.quantity}</span>
+            </div>
+            <div class="cart_remove">
+                <button onclick="removeItem(${item.id})">X</button>
             </div>
         `;
+        cartItems.appendChild(div);
     });
 
-    cartTotal.innerText = "₹" + total;
+    cartSubtotal.textContent = subtotal;
 }
 
-/* ===========================
-   CHECKOUT (DEMO)
-   =========================== */
-if (checkoutBtn) {
-    checkoutBtn.addEventListener("click", () => {
-        if (cart.length === 0) {
-            alert("Cart is empty!");
-            return;
-        }
-        alert("Proceeding to checkout...");
-        console.log(cart);
+// ======= INCREASE / DECREASE / REMOVE =======
+function increaseQty(id) {
+    const item = cart.find(i => i.id === id);
+    if(item) item.quantity += 1;
+    renderCart();
+}
+
+function decreaseQty(id) {
+    const item = cart.find(i => i.id === id);
+    if(item) {
+        item.quantity -= 1;
+        if(item.quantity <= 0) removeItem(id);
+    }
+    renderCart();
+}
+
+function removeItem(id) {
+    cart = cart.filter(i => i.id !== id);
+    renderCart();
+}
+
+// ======= CLEAR ALL =======
+clearCartBtn.addEventListener('click', () => {
+    cart = [];
+    renderCart();
+});
+
+// ======= CHECKOUT VIA WHATSAPP =======
+checkoutBtn.addEventListener('click', () => {
+    if(cart.length === 0){
+        alert("Cart is empty!");
+        return;
+    }
+
+    let message = 'Hello! I want to order:\n';
+    cart.forEach(item => {
+        message += `${item.name} x ${item.quantity} = Rs.${item.price * item.quantity}\n`;
     });
-}
+    message += `Total: Rs.${cart.reduce((a,b)=>a+b.price*b.quantity,0)}`;
 
-/* ===========================
-   INIT
-   =========================== */
-updateCartCount();
-renderCart();
+    const whatsappUrl = `https://wa.me/9779824479482?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+});
