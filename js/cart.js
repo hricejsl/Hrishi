@@ -1,19 +1,10 @@
 document.addEventListener("DOMContentLoaded", function() {
-
     const cartLink = document.querySelector(".cart_link > a");
     const cartPopup = document.querySelector(".mini_cart");
     const closeCart = document.querySelector(".mini_cart_close a");
-    const cartItemsContainer = document.createElement("div");
-    cartItemsContainer.id = "cartItems";
-    const cartFooter = cartPopup.querySelector(".mini_cart_footer");
-    const checkoutBtn = cartPopup.querySelector(".cart_button.checkout a");
-    const emptyCartMessage = document.createElement("p");
-    emptyCartMessage.textContent = "Your cart is empty.";
-    emptyCartMessage.style.color = "#fff";
-    emptyCartMessage.style.textAlign = "center";
-    emptyCartMessage.style.marginTop = "50px";
-    cartPopup.insertBefore(cartItemsContainer, cartFooter);
-    cartPopup.insertBefore(emptyCartMessage, cartFooter);
+    const cartItemsContainer = document.getElementById("cartItems");
+    const checkoutBtn = document.getElementById("checkoutBtn");
+    const emptyCartMessage = document.getElementById("emptyCartMessage");
 
     let cart = [];
 
@@ -30,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
         cartPopup.classList.remove("active");
     });
 
-    // Add product
+    // Add product example
     window.addToCart = function(product){
         const existing = cart.find(item => item.id === product.id);
         if(existing){
@@ -64,10 +55,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
         if(cart.length === 0){
             emptyCartMessage.style.display = "block";
-            cartFooter.style.display = "none";
         } else {
             emptyCartMessage.style.display = "none";
-            cartFooter.style.display = "block";
 
             cart.forEach(item => {
                 const div = document.createElement("div");
@@ -92,10 +81,9 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         }
 
-        // Update checkout link
+        // WhatsApp checkout link example
         checkoutBtn.href = `https://wa.me/XXXXXXXXXXXX?text=${encodeURIComponent(
             cart.map(p => `${p.name} x${p.qty} Rs.${p.price * p.qty}`).join("\n")
         )}`;
     }
-
 });
