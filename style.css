@@ -2522,7 +2522,6 @@ p {
     transform: translateX(0);
 }
 
-/* Close button */
 .mini_cart_close a {
     font-size: 25px;
     color: #ffffff;
@@ -2531,7 +2530,6 @@ p {
     color: #a8741a;
 }
 
-/* Cart items */
 .cart_item {
     display: flex;
     margin-bottom: 15px;
@@ -2584,7 +2582,6 @@ p {
     color: #a8741a;
 }
 
-/* Footer */
 .mini_cart_footer {
     padding-top: 20px;
     border-top: 1px solid #2d2d2d;
