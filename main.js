@@ -180,3 +180,15 @@ document.querySelectorAll('.header_bottom .menu > li > a').forEach(function(menu
         }
     });
 });
+
+/* === ONLY OVERFLOW FIX (SAFE) === */
+.header_bottom,
+.main_menu,
+.main_menu nav {
+  overflow: visible !important;
+}
+
+ul.mega_menu {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
