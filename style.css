@@ -2721,3 +2721,39 @@ p {
         box-shadow: none;
     }
 }
+
+/* ====== Mega Menu Fix ====== */
+
+/* Parent li ko relative banake mega menu ko page ke andar lock karte hain */
+.main_menu nav ul li {
+  position: relative; 
+}
+
+/* Mega menu styling override */
+.main_menu nav ul li ul.mega_menu {
+  position: absolute !important;   /* Absolute positioning relative parent ke saath */
+  top: 100% !important;            /* Parent ke niche */
+  left: 0 !important;              /* Parent ke left se start */
+  transform: none !important;      /* Rotate/transform remove karo */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 9999;
+  max-width: 100%;                 /* Page se bahar na jaye */
+  overflow: hidden;                /* Content ko boundary ke andar rakhe */
+}
+
+/* Hover effect to show mega menu */
+.main_menu nav ul li:hover ul.mega_menu {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Optional: Adjust mega menu links */
+.main_menu nav ul li ul.mega_menu > li > a {
+  color: #ffffff;      /* Text color */
+}
+
+.main_menu nav ul li ul.mega_menu > li > a:hover {
+  color: #a8741a;      /* Hover color */
+}
