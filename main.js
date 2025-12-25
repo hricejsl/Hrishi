@@ -161,3 +161,22 @@
   });
 
 })(jQuery);
+
+/* ====== Mega Menu Click/Touch Fix for Mobile ====== */
+document.querySelectorAll('.header_bottom .menu > li > a').forEach(function(menuLink){
+    menuLink.addEventListener('click', function(e){
+        var submenu = this.nextElementSibling;
+        if(submenu && submenu.tagName === 'UL'){
+            e.preventDefault(); // prevent default link action
+            if(submenu.style.display === 'block'){
+                submenu.style.display = 'none';
+            } else {
+                // close all other open submenus
+                document.querySelectorAll('.header_bottom .menu > li > ul').forEach(function(ul){
+                    ul.style.display = 'none';
+                });
+                submenu.style.display = 'block';
+            }
+        }
+    });
+});
