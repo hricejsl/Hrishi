@@ -59,10 +59,34 @@
     nextArrow:
       '<button class="next_arrow"><i class="ion-chevron-right"></i></button>',
     responsive: [
-      { breakpoints: 400, settings: { slidesToShow: 1, slidesToScroll: 1 } },
-      { breakpoints: 768, settings: { slidesToShow: 2, slidesToScroll: 2 } },
-      { breakpoints: 992, settings: { slidesToShow: 3, slidesToScroll: 3 } },
-      { breakpoints: 1200, settings: { slidesToShow: 4, slidesToScroll: 4 } },
+      {
+        breakpoints: 400,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoints: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoints: 992,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoints: 1200,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4,
+        },
+      },
     ],
   });
 
@@ -87,10 +111,34 @@
     nextArrow:
       '<button class="next_arrow"><i class="ion-chevron-right"></i></button>',
     responsive: [
-      { breakpoints: 400, settings: { slidesToShow: 1, slidesToScroll: 1 } },
-      { breakpoints: 768, settings: { slidesToShow: 2, slidesToScroll: 2 } },
-      { breakpoints: 992, settings: { slidesToShow: 3, slidesToScroll: 3 } },
-      { breakpoints: 1200, settings: { slidesToShow: 4, slidesToScroll: 4 } },
+      {
+        breakpoints: 400,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoints: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoints: 992,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoints: 1200,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4,
+        },
+      },
     ],
   });
 
@@ -103,12 +151,21 @@
     items: 3,
     dots: false,
     margin: 30,
-    navText: ['<i class="ion-chevron-left"></i>', '<i class="ion-chevron-right"></i>'],
+    navText: [
+      '<i class="ion-chevron-left"></i>',
+      '<i class="ion-chevron-right"></i>',
+    ],
     responsiveClass: true,
     responsive: {
-      0: { items: 1 },
-      768: { items: 2 },
-      992: { items: 3 },
+      0: {
+        items: 1,
+      },
+      768: {
+        items: 2,
+      },
+      992: {
+        items: 3,
+      },
     },
   });
 
@@ -125,10 +182,18 @@
     ],
     responsiveClass: true,
     responsive: {
-      0: { items: 1 },
-      250: { items: 2 },
-      480: { items: 3 },
-      768: { items: 4 },
+      0: {
+        items: 1,
+      },
+      250: {
+        items: 2,
+      },
+      480: {
+        items: 3,
+      },
+      768: {
+        items: 4,
+      },
     },
   });
 
@@ -144,51 +209,4 @@
     $(".product-details-large .tab-pane").removeClass("active show");
     $(".product-details-large " + $href).addClass("active show");
   });
-
-  // ================= Subscribe Form Success Message =================
-  $(document).ready(function () {
-    const $subscribeForm = $("#subscribeForm");
-    const $successMessage = $("#successMessage");
-
-    $subscribeForm.on("submit", function (e) {
-      e.preventDefault();
-      $successMessage.fadeIn();  // show success message
-      $subscribeForm[0].reset(); // clear form
-      setTimeout(function () {
-        $successMessage.fadeOut();
-      }, 4000); // hide after 4 seconds
-    });
-  });
-
 })(jQuery);
-
-/* ====== Mega Menu Click/Touch Fix for Mobile ====== */
-document.querySelectorAll('.header_bottom .menu > li > a').forEach(function(menuLink){
-    menuLink.addEventListener('click', function(e){
-        var submenu = this.nextElementSibling;
-        if(submenu && submenu.tagName === 'UL'){
-            e.preventDefault(); // prevent default link action
-            if(submenu.style.display === 'block'){
-                submenu.style.display = 'none';
-            } else {
-                // close all other open submenus
-                document.querySelectorAll('.header_bottom .menu > li > ul').forEach(function(ul){
-                    ul.style.display = 'none';
-                });
-                submenu.style.display = 'block';
-            }
-        }
-    });
-});
-
-/* === ONLY OVERFLOW FIX (SAFE) === */
-.header_bottom,
-.main_menu,
-.main_menu nav {
-  overflow: visible !important;
-}
-
-ul.mega_menu {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
