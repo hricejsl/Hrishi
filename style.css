@@ -2060,6 +2060,49 @@ ul {
   text-align: center;
 }
 
+/* ===== Mobile Responsive Subscribe ===== */
+@media (max-width: 600px) {
+  .newsletter_black .newsletter_content form {
+    flex-direction: column;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .newsletter_black .newsletter_content form input {
+    padding: 10px 20px; /* button ke liye extra space hata diya */
+    margin-bottom: 10px;
+  }
+
+  .newsletter_black .newsletter_content form button {
+    position: relative;
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 4px;
+  }
+}
+/* ===== Tablet Responsive Subscribe ===== */
+@media (max-width: 900px) and (min-width: 601px) {
+  .newsletter_black .newsletter_content form {
+    flex-direction: row;
+    max-width: 90%;
+    width: 100%;
+  }
+
+  .newsletter_black .newsletter_content form input {
+    padding: 10px 120px 10px 20px; /* button ke liye space adjust */
+    margin-bottom: 0;
+  }
+
+  .newsletter_black .newsletter_content form button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 0 40px;
+    height: 100%;
+    border-radius: 0 4px 4px 0;
+  }
+}
+
 /* ****************banner section ************** */
 .banner_section_five {
   border-bottom: 0;
