@@ -529,3 +529,24 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
 })(jQuery);
+
+// ===== GLOBAL FIX: Stop all # links scrolling to top =====
+document.addEventListener("DOMContentLoaded", function () {
+
+  // select ALL anchor tags
+  const allLinks = document.querySelectorAll("a");
+
+  allLinks.forEach(function (link) {
+    const href = link.getAttribute("href");
+
+    // if href is exactly #
+    if (href === "#") {
+      link.setAttribute("href", "javascript:void(0)");
+
+      link.addEventListener("click", function (e) {
+        e.preventDefault(); // 🔥 MAIN LINE
+      });
+    }
+  });
+
+});
