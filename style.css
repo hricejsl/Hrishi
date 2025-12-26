@@ -1994,12 +1994,12 @@ ul {
   display: block;
   margin-top: 10px;
 }
-
-/* ***********************subscribe *********** */
+/* ================= Subscribe Section – Pro Design ================= */
 .newsletter_area {
   border-bottom: 1px solid #ebebeb;
-  padding-bottom: 70px;
+  padding: 70px 20px 80px;
   margin-bottom: 65px;
+  background: #1a1a1a; /* dark background for premium look */
 }
 
 .newsletter_black {
@@ -2009,97 +2009,101 @@ ul {
 }
 
 .newsletter_black h2 {
-  color: #ffffff;
-  font-family: serif;
+  color: #ffd700; /* gold text for premium feel */
+  font-family: 'Georgia', serif;
   font-weight: 700;
-  font-size: 35px;
-  letter-spacing: 2px;
-  line-height: 32px;
+  font-size: 36px;
+  letter-spacing: 1px;
+  line-height: 40px;
+  margin-bottom: 15px;
 }
+
 .newsletter_black p {
-  color: #a0a0a0;
-  line-height: 26px;
-  margin-bottom: 37px;
+  color: #c0c0c0;
+  font-size: 16px;
+  margin-bottom: 30px;
 }
+
+/* Form */
 .newsletter_black .newsletter_content form {
   display: flex;
   width: 100%;
   max-width: 600px;
   position: relative;
-  margin: 0 auto 20px;
+  margin: 0 auto;
   overflow: hidden;
+  border-radius: 50px; /* rounded capsule style */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
 }
 
+/* Input */
 .newsletter_black .newsletter_content form input {
-  width: 100%;
-  border: 2px solid #2d2d2d;
-  font-size: 12px;
-  color: #fff;
-  padding: 10px 150px 10px 20px;
-  background: none;
-  border-radius: 4px;
-  box-sizing: border-box;
+  flex: 1;
+  padding: 12px 150px 12px 25px; /* desktop padding */
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: #333;
+  border-radius: 50px 0 0 50px;
+  background: #fff;
+  transition: all 0.3s ease;
 }
 
+.newsletter_black .newsletter_content form input:focus {
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+}
+
+/* Button */
 .newsletter_black .newsletter_content form button {
   position: absolute;
   right: 0;
   top: 0;
-  padding: 0 40px;
   height: 100%;
-  border: 0;
-  background: #a8741a;
+  padding: 0 40px;
+  border-radius: 0 50px 50px 0;
+  border: none;
+  background: linear-gradient(45deg, #f7b733, #fc4a1a);
   color: #fff;
-  border-radius: 0 4px 4px 0;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .newsletter_black .newsletter_content form button:hover {
-  color: #000;
-}
-.newsletter_content {
-  text-align: center;
+  transform: scale(1.05);
+  background: linear-gradient(45deg, #fc4a1a, #f7b733);
 }
 
-/* ===== Mobile Responsive Subscribe ===== */
+/* ================= Tablet ================= */
+@media (max-width: 900px) and (min-width: 601px) {
+  .newsletter_black .newsletter_content form input {
+    padding: 12px 120px 12px 20px;
+  }
+
+  .newsletter_black .newsletter_content form button {
+    padding: 0 35px;
+  }
+}
+
+/* ================= Mobile ================= */
 @media (max-width: 600px) {
   .newsletter_black .newsletter_content form {
     flex-direction: column;
-    max-width: 100%;
-    width: 100%;
+    border-radius: 20px;
   }
 
   .newsletter_black .newsletter_content form input {
-    padding: 10px 20px; /* button ke liye extra space hata diya */
+    padding: 12px 20px;
+    border-radius: 20px;
     margin-bottom: 10px;
   }
 
   .newsletter_black .newsletter_content form button {
     position: relative;
     width: 100%;
-    padding: 10px 0;
-    border-radius: 4px;
-  }
-}
-/* ===== Tablet Responsive Subscribe ===== */
-@media (max-width: 900px) and (min-width: 601px) {
-  .newsletter_black .newsletter_content form {
-    flex-direction: row;
-    max-width: 90%;
-    width: 100%;
-  }
-
-  .newsletter_black .newsletter_content form input {
-    padding: 10px 120px 10px 20px; /* button ke liye space adjust */
-    margin-bottom: 0;
-  }
-
-  .newsletter_black .newsletter_content form button {
-    position: absolute;
-    right: 0;
-    top: 0;
-    padding: 0 40px;
-    height: 100%;
-    border-radius: 0 4px 4px 0;
+    border-radius: 20px;
+    padding: 12px 0;
   }
 }
 
