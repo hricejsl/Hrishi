@@ -144,3 +144,68 @@ $(document).on("submit", "#subscribe_form", function (e) {
 
   }, 1000);
 });
+// ===== Boss-ready Compare Feature =====
+(function() {
+    const maxCompare = 3; // maximum products to compare
+    let compareList = [];
+
+    // function to create popup HTML
+    function showComparePopup() {
+        let popup = document.getElementById('compare_popup');
+        if(!popup) {
+            popup = document.createElement('div');
+            popup.id = 'compare_popup';
+            popup.style.position = 'fixed';
+            popup.style.bottom = '20px';
+            popup.style.right = '20px';
+            popup.style.background = '#fff';
+            popup.style.padding = '20px';
+            popup.style.border = '1px solid #ccc';
+            popup.style.boxShadow = '0 0 10px rgba(0,0,0,0.2)';
+            popup.style.zIndex = '9999';
+            popup.style.maxWidth = '400px';
+            popup.style.display = 'none';
+            document.body.appendChild(popup);
+        }
+
+        // generate HTML content
+        let html = '<h4>Compare Products</h4><ul style="list-style:none;padding:0;">';
+        compareList.forEach(item => {
+            html += `<li>${item.name} - Rs.${item.price}</li>`;
+        });
+        html += '</ul>';
+        html += '<button id="clear_compare" style="margin-top:10px;">Clear</button>';
+        popup.innerHTML = html;
+        popup.style.display = 'block';
+
+        // clear button
+        document.getElementById('clear_compare').addEventListener('click', function(){
+            compareList = [];
+            popup.style.display = 'none';
+        });
+    }
+
+    // handle compare icon click
+    document.querySelectorAll('.compare-icon').forEach(icon => {
+        icon.addEventListener('click', function(e){
+            e.preventDefault();
+            const product = this.closest('.single_product');
+            const name = product.querySelector('h3 a').textContent;
+            const price = product.querySelector('.current_price').textContent;
+
+            // avoid duplicates
+            if(compareList.find(p => p.name === name)) {
+                alert('Boss! This product is already in compare list 😎');
+                return;
+            }
+
+            if(compareList.length >= maxCompare) {
+                alert('Boss! Max 3 products can be compared at once.');
+                return;
+            }
+
+            compareList.push({name, price});
+            showComparePopup();
+        });
+    });
+})();
