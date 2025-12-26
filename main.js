@@ -210,9 +210,9 @@
     $(".product-details-large " + $href).addClass("active show");
   });
 
-  // ===== Boss-ready Subscribe Function with Checkmark =====
+  // ===== Boss-ready Subscribe Function targeting #subscribe_form =====
 document.addEventListener('DOMContentLoaded', function() {
-    const form = document.querySelector('.newsletter_content form');
+    const form = document.getElementById('subscribe_form'); // target by ID
     const emailInput = form.querySelector('input');
     const button = form.querySelector('button');
 
@@ -224,7 +224,7 @@ document.addEventListener('DOMContentLoaded', function() {
     form.appendChild(honeypot);
 
     form.addEventListener('submit', function(e) {
-        e.preventDefault();
+        e.preventDefault(); // boss: stops page jump
 
         // Spam check
         if(honeypot.value !== '') {
@@ -247,10 +247,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Simulate async submission
         setTimeout(() => {
-            // ✅ Alert boss
             alert('Thanks boss! You are now subscribed.');
-
-            // Reset form
             form.reset();
             emailInput.disabled = false;
             button.disabled = false;
