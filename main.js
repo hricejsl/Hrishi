@@ -229,3 +229,24 @@ $(document).ready(function() {
     $("#quickview_modal").modal("show");
   });
 });
+
+document.querySelectorAll('.quick_button a').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+
+    const product = this.closest('.single_product');
+    const img = product.querySelector('.primary_img img').src;
+    const title = product.querySelector('.product_content h3 a').textContent;
+    const desc = product.querySelector('.product_desc p') ? product.querySelector('.product_desc p').textContent : '';
+    const price = product.querySelector('.price_box') ? product.querySelector('.price_box').innerHTML : '';
+
+    // Set modal content
+    document.getElementById('quickview_image').src = img;
+    document.getElementById('quickview_title').textContent = title;
+    document.getElementById('quickview_desc').textContent = desc;
+    document.getElementById('quickview_price').innerHTML = price;
+
+    // Show modal
+    $('#quickview_modal').modal('show');
+  });
+});
