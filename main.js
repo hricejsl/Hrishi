@@ -210,7 +210,10 @@
     $(".product-details-large " + $href).addClass("active show");
   });
 
-  // ===== Boss-ready Subscribe Function targeting #subscribe_form =====
+  
+})(jQuery);
+
+// ===== Boss-ready Subscribe Function targeting #subscribe_form =====
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('subscribe_form'); // target by ID
     const emailInput = form.querySelector('input');
@@ -280,4 +283,26 @@ $("#subscribe_form").on("submit", function (e) {
   this.submit(); // comment karo agar popup nahi chahiye
 });
 
-})(jQuery);
+// ================= SUBSCRIBE FORM =================
+$("#subscribe_form").on("submit", function (e) {
+  e.preventDefault(); // page upar jane se rokta hai
+
+  const form = this;
+  const btn = $(form).find("button");
+  const emailInput = $(form).find('input[type="email"]');
+
+  if (emailInput.val() === "") {
+    alert("Boss email likhna compulsory hai 😄");
+    return;
+  }
+
+  btn.prop("disabled", true);
+  btn.text("Subscribing...");
+
+  setTimeout(() => {
+    btn.text("✔ Subscribed");
+    btn.addClass("subscribed");
+
+    form.submit(); // Mailchimp ko data bhejta hai
+  }, 1500);
+});
