@@ -1,42 +1,35 @@
 (function ($) {
   "use strict";
 
+  /* WOW Animation */
   new WOW().init();
 
-  //navbar cart
-  $(".cart_link > a").on("click", function () {
+  /* ================= CART ================= */
+  $(".cart_link > a").on("click", function (e) {
+    e.preventDefault();
     $(".mini_cart").addClass("active");
   });
 
-  $(".mini_cart_close > a").on("click", function () {
+  $(".mini_cart_close > a").on("click", function (e) {
+    e.preventDefault();
     $(".mini_cart").removeClass("active");
   });
 
-  //sticky navbar
+  /* ================= STICKY HEADER ================= */
   $(window).on("scroll", function () {
-    var scroll = $(window).scrollTop();
-    if (scroll < 100) {
+    if ($(this).scrollTop() < 100) {
       $(".sticky-header").removeClass("sticky");
     } else {
       $(".sticky-header").addClass("sticky");
     }
   });
 
-  // background image
-  function dataBackgroundImage() {
-    $("[data-bgimg]").each(function () {
-      var bgImgUrl = $(this).data("bgimg");
-      $(this).css({
-        "background-image": "url(" + bgImgUrl + ")", // concatenation
-      });
-    });
-  }
-
-  $(window).on("load", function () {
-    dataBackgroundImage();
+  /* ================= BACKGROUND IMAGE ================= */
+  $("[data-bgimg]").each(function () {
+    $(this).css("background-image", "url(" + $(this).data("bgimg") + ")");
   });
 
-  //for carousel slider of the slider section
+  /* ================= SLIDER ================= */
   $(".slider_area").owlCarousel({
     animateOut: "fadeOut",
     autoplay: true,
@@ -47,262 +40,108 @@
     dots: true,
   });
 
-  //product column responsive
+  /* ================= PRODUCT COLUMN ================= */
   $(".product_column3").slick({
     centerMode: true,
     centerPadding: "0",
     slidesToShow: 5,
-    arrows: true,
     rows: 2,
-    prevArrow:
-      '<button class="prev_arrow"><i class="ion-chevron-left"></i></button>',
-    nextArrow:
-      '<button class="next_arrow"><i class="ion-chevron-right"></i></button>',
+    arrows: true,
+    prevArrow: '<button class="prev_arrow"><i class="ion-chevron-left"></i></button>',
+    nextArrow: '<button class="next_arrow"><i class="ion-chevron-right"></i></button>',
     responsive: [
-      {
-        breakpoints: 400,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoints: 768,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-        },
-      },
-      {
-        breakpoints: 992,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-        },
-      },
-      {
-        breakpoints: 1200,
-        settings: {
-          slidesToShow: 4,
-          slidesToScroll: 4,
-        },
-      },
+      { breakpoint: 1200, settings: { slidesToShow: 4 } },
+      { breakpoint: 992, settings: { slidesToShow: 3 } },
+      { breakpoint: 768, settings: { slidesToShow: 2 } },
+      { breakpoint: 400, settings: { slidesToShow: 1 } },
     ],
   });
 
-  //for tooltip
+  /* ================= TOOLTIP ================= */
   $('[data-toggle="tooltip"]').tooltip();
 
-  //tooltip active
   $(".action_links ul li a, .quick_button a").tooltip({
-    animated: "fade",
     placement: "top",
     container: "body",
   });
 
-  //product row activation responsive
-  $(".product_row1").slick({
-    centerMode: true,
-    centerPadding: "0",
-    slidesToShow: 5,
-    arrows: true,
-    prevArrow:
-      '<button class="prev_arrow"><i class="ion-chevron-left"></i></button>',
-    nextArrow:
-      '<button class="next_arrow"><i class="ion-chevron-right"></i></button>',
-    responsive: [
-      {
-        breakpoints: 400,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoints: 768,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-        },
-      },
-      {
-        breakpoints: 992,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-        },
-      },
-      {
-        breakpoints: 1200,
-        settings: {
-          slidesToShow: 4,
-          slidesToScroll: 4,
-        },
-      },
-    ],
-  });
-
-  // blog section
+  /* ================= BLOG ================= */
   $(".blog_column3").owlCarousel({
     autoplay: true,
     loop: true,
     nav: true,
     autoplayTimeout: 5000,
     items: 3,
-    dots: false,
     margin: 30,
+    dots: false,
     navText: [
       '<i class="ion-chevron-left"></i>',
       '<i class="ion-chevron-right"></i>',
     ],
-    responsiveClass: true,
     responsive: {
-      0: {
-        items: 1,
-      },
-      768: {
-        items: 2,
-      },
-      992: {
-        items: 3,
-      },
+      0: { items: 1 },
+      768: { items: 2 },
+      992: { items: 3 },
     },
   });
 
-  //navactive responsive
+  /* ================= PRODUCT NAV ================= */
   $(".product_navactive").owlCarousel({
-    autoplay: false,
     loop: true,
     nav: true,
     items: 4,
     dots: false,
     navText: [
-      '<i class="ion-chevron-left arrow-left"></i>',
-      '<i class="ion-chevron-right arrow-right"></i>',
+      '<i class="ion-chevron-left"></i>',
+      '<i class="ion-chevron-right"></i>',
     ],
-    responsiveClass: true,
     responsive: {
-      0: {
-        items: 1,
-      },
-      250: {
-        items: 2,
-      },
-      480: {
-        items: 3,
-      },
-      768: {
-        items: 4,
-      },
+      0: { items: 1 },
+      480: { items: 2 },
+      768: { items: 3 },
+      992: { items: 4 },
     },
-  });
-
-  $(".modal").on("shown.bs.modal", function (e) {
-    $(".product_navactive").resize();
   });
 
   $(".product_navactive a").on("click", function (e) {
     e.preventDefault();
-    var $href = $(this).attr("href");
     $(".product_navactive a").removeClass("active");
     $(this).addClass("active");
     $(".product-details-large .tab-pane").removeClass("active show");
-    $(".product-details-large " + $href).addClass("active show");
+    $($(this).attr("href")).addClass("active show");
   });
 
-  
 })(jQuery);
 
-// ===== Boss-ready Subscribe Function targeting #subscribe_form =====
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('subscribe_form'); // target by ID
-    const emailInput = form.querySelector('input');
-    const button = form.querySelector('button');
 
-    // Optional honeypot for spam
-    const honeypot = document.createElement('input');
-    honeypot.type = 'text';
-    honeypot.name = 'website';
-    honeypot.style.display = 'none';
-    form.appendChild(honeypot);
+/* ======================================================
+   🔥 FINAL SUBSCRIBE FIX – NO PAGE JUMP – FULL UX
+====================================================== */
+$(document).on("submit", "#subscribe_form", function (e) {
+  e.preventDefault(); // 🚫 STOP page reload / top jump
 
-    form.addEventListener('submit', function(e) {
-        e.preventDefault(); // boss: stops page jump
+  const $form = $(this);
+  const $email = $form.find('input[type="email"]');
+  const $btn = $form.find("button");
 
-        // Spam check
-        if(honeypot.value !== '') {
-            console.warn('Bot detected! Submission ignored.');
-            return;
-        }
-
-        const email = emailInput.value.trim();
-
-        // Input validation
-        if(email === '' || !email.includes('@') || !email.includes('.')) {
-            alert('Boss! Please enter a valid email.');
-            return;
-        }
-
-        // Disable input/button and show "subscribing"
-        emailInput.disabled = true;
-        button.disabled = true;
-        button.innerHTML = 'Subscribing...';
-
-        // Simulate async submission
-        setTimeout(() => {
-            alert('Thanks boss! You are now subscribed.');
-            form.reset();
-            emailInput.disabled = false;
-            button.disabled = false;
-
-            // Boss animation: checkmark effect
-            button.innerHTML = '✔ Subscribed';
-            button.classList.add('subscribe-success');
-
-            setTimeout(() => {
-                button.innerHTML = 'Subscribe';
-                button.classList.remove('subscribe-success');
-            }, 2000);
-
-        }, 1000);
-    });
-});
-$("#subscribe_form").on("submit", function (e) {
-  e.preventDefault(); // 🔥 YE LINE MOST IMPORTANT
-
-  const email = $(this).find('input[type="email"]').val();
-
-  if (email === "") {
-    alert("Boss email likho pahle 😄");
+  if ($email.val().trim() === "") {
+    alert("Boss email likho 😄");
     return;
   }
 
-  alert("Thanks for subscribing boss! ✅");
+  // UX: subscribing
+  $btn.prop("disabled", true).text("Subscribing...");
 
-  // agar Mailchimp use kar rahe ho
-  this.submit(); // comment karo agar popup nahi chahiye
-});
+  setTimeout(function () {
+    alert("Thanks boss! You are subscribed ✅");
 
-// ================= SUBSCRIBE FORM =================
-$("#subscribe_form").on("submit", function (e) {
-  e.preventDefault(); // page upar jane se rokta hai
+    $btn.text("✔ Subscribed").addClass("subscribed");
 
-  const form = this;
-  const btn = $(form).find("button");
-  const emailInput = $(form).find('input[type="email"]');
+    setTimeout(function () {
+      $btn.prop("disabled", false).text("Subscribe");
+      $btn.removeClass("subscribed");
+      $form[0].reset();
+    }, 2000);
 
-  if (emailInput.val() === "") {
-    alert("Boss email likhna compulsory hai 😄");
-    return;
-  }
-
-  btn.prop("disabled", true);
-  btn.text("Subscribing...");
-
-  setTimeout(() => {
-    btn.text("✔ Subscribed");
-    btn.addClass("subscribed");
-
-    form.submit(); // Mailchimp ko data bhejta hai
-  }, 1500);
+  }, 1000);
 });
