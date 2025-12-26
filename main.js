@@ -369,3 +369,25 @@ function openCompareModal() {
 document.querySelector('.close_compare').addEventListener('click', function(){
   document.getElementById('compare_modal').style.display = 'none';
 });
+
+// ===== Boss-ready Compare Button Function =====
+document.addEventListener('DOMContentLoaded', function () {
+    // Select all compare buttons
+    const compareButtons = document.querySelectorAll('.action_links ul li a[title="Compare"]');
+
+    compareButtons.forEach(function (btn) {
+        // Change href to prevent page jump
+        btn.setAttribute('href', 'javascript:void(0)');
+
+        // Add click event for popup / action
+        btn.addEventListener('click', function (e) {
+            e.preventDefault(); // Stops page from going to top
+
+            // Boss: action you want on compare, for now simple alert
+            alert('Boss! Compare feature clicked for this product.');
+            
+            // Optional: Add product to compare list array
+            // You can implement a popup modal showing selected products here
+        });
+    });
+});
