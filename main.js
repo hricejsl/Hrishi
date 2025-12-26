@@ -250,3 +250,59 @@ document.querySelectorAll('.quick_button a').forEach(btn => {
     $('#quickview_modal').modal('show');
   });
 });
+let compareList = [];
+
+function addToCompare(product) {
+  // Check duplicate
+  if(compareList.find(p => p.id === product.id)) {
+    alert('Product already in compare!');
+    return;
+  }
+
+  compareList.push(product);
+  alert('Product added to compare!');
+
+  if(compareList.length > 1) {
+    showCompareModal();
+  }
+}
+
+function showCompareModal() {
+  const container = document.getElementById('compare_table');
+  container.innerHTML = '';
+
+  compareList.forEach(p => {
+    const card = document.createElement('div');
+    card.style.minWidth = '200px';
+    card.style.border = '1px solid #ccc';
+    card.style.padding = '10px';
+    card.style.textAlign = 'center';
+
+    card.innerHTML = `
+      <img src="${p.img}" alt="${p.title}" style="width:100%; height:auto; margin-bottom:5px;">
+      <h6>${p.title}</h6>
+      <p>${p.price}</p>
+      <button class="btn btn-sm btn-danger remove-compare" data-id="${p.id}">Remove</button>
+    `;
+    container.appendChild(card);
+  });
+
+  // Add remove buttons
+  container.querySelectorAll('.remove-compare').forEach(btn => {
+    btn.addEventListener('click', e => {
+      const id = btn.getAttribute('data-id');
+      compareList = compareList.filter(p => p.id != id);
+      showCompareModal(); // refresh modal
+    });
+  });
+
+  // Show modal
+  const compareModal = new bootstrap.Modal(document.getElementById('compare_modal'));
+  compareModal.show();
+}
+
+// Clear all button
+document.getElementById('clear_compare').addEventListener('click', () => {
+  compareList = [];
+  showCompareModal();
+});
