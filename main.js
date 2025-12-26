@@ -391,3 +391,19 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
+// ===== Boss: Prevent all # links from scrolling to top =====
+document.addEventListener('DOMContentLoaded', function () {
+    // Select all anchor tags with href="#"
+    const hashLinks = document.querySelectorAll('a[href="#"]');
+
+    hashLinks.forEach(function(link) {
+        // Change href to javascript:void(0)
+        link.setAttribute('href', 'javascript:void(0)');
+
+        // Prevent default behavior
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+        });
+    });
+});
