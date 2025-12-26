@@ -2554,3 +2554,36 @@ p {
   background: #a8741a;
   color: #fff;
 }
+/* ===== Instagram + Subscribe spacing fix with 20px gap ===== */
+.instagram_area {
+    margin-bottom: 0;       /* remove extra space below Instagram */
+    padding-bottom: 0;      /* remove bottom padding */
+}
+
+.newsletter_area {
+    padding-top: 20px;      /* small 20px gap above subscribe section */
+    padding-bottom: 80px;   /* keep bottom padding for content */
+    margin-bottom: 0;       /* remove extra bottom margin */
+}
+
+/* ===== Tablet ===== */
+@media (max-width: 900px) {
+    .instagram_area {
+        padding-bottom: 0;
+    }
+    .newsletter_area {
+        padding-top: 20px;  /* maintain 20px gap on tablet */
+        padding-bottom: 60px;
+    }
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 600px) {
+    .instagram_area {
+        padding-bottom: 0;
+    }
+    .newsletter_area {
+        padding-top: 20px;  /* maintain 20px gap on mobile */
+        padding-bottom: 50px;
+    }
+}
