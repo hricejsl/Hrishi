@@ -474,3 +474,58 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
 })(jQuery);
+
+(function($){
+  "use strict";
+
+  // Compare Array
+  let compareProducts = [];
+
+  // On Compare Button Click
+  $('.action_links ul li a[title="Compare"]').on('click', function(e){
+      e.preventDefault(); // stop scroll
+
+      if(compareProducts.length >= 3){
+          alert('Boss! Maximum 3 products can be compared.');
+          return;
+      }
+
+      const productCard = $(this).closest('.single_product');
+      const productName = productCard.find('h3 a').text();
+      const productImage = productCard.find('.primary_img img').attr('src');
+      const productPrice = productCard.find('.current_price').text();
+
+      // Avoid duplicate
+      if(compareProducts.some(p => p.name === productName)){
+          alert('Boss! This product is already added.');
+          return;
+      }
+
+      // Add to compare array
+      compareProducts.push({name: productName, image: productImage, price: productPrice});
+      updateCompareModal();
+      $('#compare_modal').modal('show');
+  });
+
+  // Update Compare Modal
+  function updateCompareModal(){
+      const container = $('.compare_products_container');
+      container.empty();
+      compareProducts.forEach(p => {
+          container.append(`
+              <div class="compare_product_card" style="text-align:center;">
+                  <img src="${p.image}" alt="${p.name}" style="width:100px; height:auto;">
+                  <h6>${p.name}</h6>
+                  <p>${p.price}</p>
+              </div>
+          `);
+      });
+  }
+
+  // Clear Compare List
+  $('.clear_compare').on('click', function(){
+      compareProducts = [];
+      updateCompareModal();
+  });
+
+})(jQuery);
