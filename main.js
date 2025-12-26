@@ -306,3 +306,16 @@ document.getElementById('clear_compare').addEventListener('click', () => {
   compareList = [];
   showCompareModal();
 });
+
+document.querySelectorAll('.compare-btn').forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.preventDefault();
+    const product = {
+      id: btn.getAttribute('data-id'),
+      img: btn.getAttribute('data-img'),
+      title: btn.getAttribute('data-title'),
+      price: btn.getAttribute('data-price')
+    };
+    addToCompare(product);
+  });
+});
