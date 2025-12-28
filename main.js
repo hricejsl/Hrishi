@@ -1,122 +1,202 @@
 (function ($) {
   "use strict";
 
-  /* ================== WOW Animation ================== */
   new WOW().init();
 
-  /* ================== Mini Cart ================== */
-  $(".cart_link > a").on("click", function (e) {
-    e.preventDefault();
+  //navbar cart
+  $(".cart_link > a").on("click", function () {
     $(".mini_cart").addClass("active");
   });
 
-  $(".mini_cart_close > a").on("click", function (e) {
-    e.preventDefault();
+  $(".mini_cart_close > a").on("click", function () {
     $(".mini_cart").removeClass("active");
   });
 
-  /* ================== Modal Section ================== */
-  $(".open_modal").on("click", function (e) {
-    e.preventDefault();
-    $(".modal_area").addClass("active");
+  // background image
+  function dataBackgroundImage() {
+    $("[data-bgimg]").each(function () {
+      var bgImgUrl = $(this).data("bgimg");
+      $(this).css({
+        "background-image": "url(" + bgImgUrl + ")", // concatenation
+      });
+    });
+  }
+
+  $(window).on("load", function () {
+    dataBackgroundImage();
   });
 
-  $(".modal_close").on("click", function (e) {
-    e.preventDefault();
-    $(".modal_area").removeClass("active");
-  });
-
-  /* ================== Header Submenu Click ================== */
-  $("nav.main_menu ul li.has-submenu > a").on("click", function(e) {
-    e.preventDefault();
-    var $submenu = $(this).siblings(".submenu");
-    $(".submenu").not($submenu).slideUp();
-    $submenu.slideToggle();
-  });
-
-  /* ================== Sticky Header ================== */
-  var header = $(".header_bottom");
-  $(window).on("scroll", function () {
-    if ($(this).scrollTop() > 50) {
-      header.addClass("sticky");
-    } else {
-      header.removeClass("sticky");
-    }
-  });
-
-  /* ================== Background Images ================== */
-  $("[data-bgimg]").each(function () {
-    $(this).css("background-image", "url(" + $(this).data("bgimg") + ")");
-  });
-
-  /* ================== Hero Slider ================== */
+  //for carousel slider of the slider section
   $(".slider_area").owlCarousel({
-    items: 1,
-    loop: true,
-    autoplay: true,
-    dots: true,
     animateOut: "fadeOut",
+    autoplay: true,
+    loop: true,
+    nav: false,
+    autoplayTimeout: 6000,
+    items: 1,
+    dots: true,
   });
 
-  /* ================== Product Slider ================== */
+  //product column responsive
   $(".product_column3").slick({
+    centerMode: true,
+    centerPadding: "0",
     slidesToShow: 5,
     arrows: true,
-    prevArrow: '<button class="prev_arrow"><i class="ion-chevron-left"></i></button>',
-    nextArrow: '<button class="next_arrow"><i class="ion-chevron-right"></i></button>',
+    rows: 2,
+    prevArrow:
+      '<button class="prev_arrow"><i class="ion-chevron-left"></i></button>',
+    nextArrow:
+      '<button class="next_arrow"><i class="ion-chevron-right"></i></button>',
     responsive: [
-      { breakpoint: 1200, settings: { slidesToShow: 4 } },
-      { breakpoint: 992, settings: { slidesToShow: 3 } },
-      { breakpoint: 768, settings: { slidesToShow: 2 } },
-      { breakpoint: 480, settings: { slidesToShow: 1 } },
+      {
+        breakpoints: 400,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoints: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoints: 992,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoints: 1200,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4,
+        },
+      },
     ],
   });
 
-  /* ================== Blog Slider ================== */
+  //for tooltip
+  $('[data-toggle="tooltip"]').tooltip();
+
+  //tooltip active
+  $(".action_links ul li a, .quick_button a").tooltip({
+    animated: "fade",
+    placement: "top",
+    container: "body",
+  });
+
+  //product row activation responsive
+  $(".product_row1").slick({
+    centerMode: true,
+    centerPadding: "0",
+    slidesToShow: 5,
+    arrows: true,
+    prevArrow:
+      '<button class="prev_arrow"><i class="ion-chevron-left"></i></button>',
+    nextArrow:
+      '<button class="next_arrow"><i class="ion-chevron-right"></i></button>',
+    responsive: [
+      {
+        breakpoints: 400,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoints: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoints: 992,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoints: 1200,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4,
+        },
+      },
+    ],
+  });
+
+  // blog section
   $(".blog_column3").owlCarousel({
-    items: 3,
-    loop: true,
     autoplay: true,
-    margin: 30,
+    loop: true,
     nav: true,
+    autoplayTimeout: 5000,
+    items: 3,
     dots: false,
-    navText: ['<i class="ion-chevron-left"></i>', '<i class="ion-chevron-right"></i>'],
+    margin: 30,
+    navText: [
+      '<i class="ion-chevron-left"></i>',
+      '<i class="ion-chevron-right"></i>',
+    ],
+    responsiveClass: true,
     responsive: {
-      0: { items: 1 },
-      768: { items: 2 },
-      992: { items: 3 },
+      0: {
+        items: 1,
+      },
+      768: {
+        items: 2,
+      },
+      992: {
+        items: 3,
+      },
     },
   });
 
-  /* ================== Tooltip ================== */
-  $('[data-toggle="tooltip"]').tooltip();
-
-  /* ================== Quick View ================== */
-  $(".quick_button a").on("click", function (e) {
-    e.preventDefault();
-    const product = $(this).closest(".single_product");
-    $("#quickview_image").attr("src", product.find(".primary_img img").attr("src"));
-    $("#quickview_title").text(product.find("h3 a").text());
-    $("#quickview_price").html(product.find(".price_box").html());
-    $("#quickview_modal").modal("show");
+  //navactive responsive
+  $(".product_navactive").owlCarousel({
+    autoplay: false,
+    loop: true,
+    nav: true,
+    items: 4,
+    dots: false,
+    navText: [
+      '<i class="ion-chevron-left arrow-left"></i>',
+      '<i class="ion-chevron-right arrow-right"></i>',
+    ],
+    responsiveClass: true,
+    responsive: {
+      0: {
+        items: 1,
+      },
+      250: {
+        items: 2,
+      },
+      480: {
+        items: 3,
+      },
+      768: {
+        items: 4,
+      },
+    },
   });
 
-  /* ================== Subscribe ================== */
-  $("#subscribe_form").on("submit", function (e) {
-    e.preventDefault();
-    alert("Thanks boss! You are subscribed ✅");
-    this.reset();
+  $(".modal").on("shown.bs.modal", function (e) {
+    $(".product_navactive").resize();
   });
 
-  /* ================== Prevent # Scroll ================== */
-  $('a[href="#"]').on("click", function (e) {
+  $(".product_navactive a").on("click", function (e) {
     e.preventDefault();
+    var $href = $(this).attr("href");
+    $(".product_navactive a").removeClass("active");
+    $(this).addClass("active");
+    $(".product-details-large .tab-pane").removeClass("active show");
+    $(".product-details-large " + $href).addClass("active show");
   });
-
-  /* ================== Disable Compare safely ================== */
-  $('.action_links a[title="Compare"]').on("click", function (e) {
-    e.preventDefault();
-    alert("Boss 😄 Compare feature baad me add karenge");
-  });
-
 })(jQuery);
