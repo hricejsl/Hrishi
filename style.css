@@ -1,8 +1,16 @@
+/* ======================= Extra Safety ======================= */
+body {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  background: #242424;
+}
+
+/* ======================= Fonts ======================= */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&display=swap");
 
-/* common styling */
-
+/* ======================= Common Styling ======================= */
 * {
   box-sizing: border-box;
 }
@@ -21,22 +29,15 @@ body {
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
-  visibility: visible;
   font-family: "Poppins", sans-serif;
   color: #5a5a5a;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1,h2,h3,h4,h5,h6 {
   font-weight: 400;
   margin-top: 0;
   font-family: "Baloo 2", cursive;
 }
-
 h1 {
   font-size: 48px;
   line-height: 1;
