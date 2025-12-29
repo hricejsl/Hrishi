@@ -2689,34 +2689,38 @@ header,
     width: 100%;
     max-width: 100%;
 }
-/* ==== SUBMENU WIDTH & ITEM GAP FINAL FIX ==== */
+/* ==== SUBMENU WIDTH & GAP FINAL FIX ==== */
 .header_account ul,
 .account_list,
 .sub_menu,
 .dropdown-menu {
-    max-width: 180px;       /* submenu box ab tight hoga */
-    width: auto;            /* content ke hisaab se adjust */
+    max-width: 180px;       /* box tight, screen ke andar fit */
+    width: auto;
     box-sizing: border-box;
 }
 
-/* Submenu items ke andar spacing tight karo */
 .header_account ul li a,
 .account_list li a,
 .sub_menu li a {
-    padding: 4px 8px;       /* pehle 12px, ab tight */
-    font-size: 13px;        /* optional, chhota text */
+    padding: 4px 8px;       /* vertical gap tight */
+    font-size: 13px;        /* optional text size */
 }
 
-/* ==== MOBILE CATEGORY FIX ==== */
+/* ==== MOBILE CATEGORY PORTRAIT FIX ==== */
 @media (max-width: 767px) {
     .category_menu,
     .category_menu ul {
-        overflow: visible !important; /* last option visible rahe */
+        overflow: visible !important; /* last item visible */
         height: auto !important;
     }
 
     .category_menu li {
-        display: block !important;   /* saare options dikhe */
+        display: block !important;   /* saare items dikhe */
+    }
+
+    .category_menu li a {
+        padding: 8px 12px;           /* optional spacing tight */
+        font-size: 14px;             /* optional text size */
     }
 }
 body {overflow-x: hidden !important;}
