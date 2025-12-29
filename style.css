@@ -2689,22 +2689,6 @@ header,
     width: 100%;
     max-width: 100%;
 }
-/* ==== SUBMENU WIDTH & GAP FINAL FIX ==== */
-.header_account ul,
-.account_list,
-.sub_menu,
-.dropdown-menu {
-    max-width: 180px;       /* box tight, screen ke andar fit */
-    width: auto;
-    box-sizing: border-box;
-}
-
-.header_account ul li a,
-.account_list li a,
-.sub_menu li a {
-    padding: 4px 8px;       /* vertical gap tight */
-    font-size: 13px;        /* optional text size */
-}
 
 /* ==== MOBILE CATEGORY PORTRAIT FIX ==== */
 @media (max-width: 767px) {
@@ -2723,19 +2707,25 @@ header,
         font-size: 14px;             /* optional text size */
     }
 }
-/* ==== FIX DROPDOWN LINKS WIDTH & GAP (exact match) ==== */
-.top_links > .dropdown_links {
+/* ==== ALL SUBMENU WIDTH & GAP FIX ==== */
+.dropdown_links,
+.dropdown_currency,
+.dropdown_language {
     max-width: 200px !important;   /* box tight */
     width: auto !important;
     box-sizing: border-box;
 }
 
-.top_links > .dropdown_links li {
-    line-height: 28px !important;  /* gap tight */
-    padding: 4px 0 !important;     /* vertical padding kam */
+.dropdown_links li,
+.dropdown_currency li,
+.dropdown_language li {
+    line-height: 28px !important;  /* vertical gap tight */
+    padding: 4px 0 !important;     /* gap kam */
 }
 
-.top_links > .dropdown_links li a {
-    font-size: 13px !important;    /* optional, text size chhota karo */
+.dropdown_links li a,
+.dropdown_currency li a,
+.dropdown_language li a {
+    font-size: 13px !important;    /* optional, text size tight */
 }
 body {overflow-x: hidden !important;}
