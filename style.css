@@ -2806,7 +2806,7 @@ header,
 }
 
 .custom-col-5 .single_product {
-    width: 100%; !important; /* fill parent column */
+    width: 100%; /* fill parent column */
     text-align: center;
 }
 
@@ -2833,9 +2833,5 @@ header,
         width: 25% !important; /* 4 products per row */
     }
 }
-.single_product img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
+
 body {overflow-x: hidden !important;}
