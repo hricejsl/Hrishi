@@ -2725,8 +2725,8 @@ header,
 }
 /* ==== FIX DROPDOWN LINKS WIDTH & GAP ==== */
 .header_black .dropdown_links {
-    max-width: 200px;    /* box width tight */
-    width: auto;         /* content ke hisaab se adjust */
+    max-width: 200px !important;
+    width: auto !important;
 }
 
 .header_black .dropdown_links li {
