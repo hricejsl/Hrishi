@@ -2723,4 +2723,18 @@ header,
         font-size: 14px;             /* optional text size */
     }
 }
+/* ==== FIX DROPDOWN LINKS WIDTH & GAP ==== */
+.header_black .dropdown_links {
+    max-width: 200px;    /* box width tight */
+    width: auto;         /* content ke hisaab se adjust */
+}
+
+.header_black .dropdown_links li {
+    line-height: 28px;   /* gap tight */
+    padding: 4px 0;      /* vertical padding kam */
+}
+
+.header_black .dropdown_links li a {
+    font-size: 13px;     /* optional, text size chhota karo */
+}
 body {overflow-x: hidden !important;}
