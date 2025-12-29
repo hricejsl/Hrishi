@@ -2793,17 +2793,8 @@ header,
     transition: all 0.3s ease-in-out !important;
 }
 /* ===== PRODUCT GRID ===== */
-.product_section {
-    padding: 50px 0;
-    background: #f9f9f9;
-}
-
-.product_grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-}
+.product_section { padding: 50px 0; background: #f9f9f9; }
+.product_grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
 
 /* ===== SINGLE PRODUCT ===== */
 .product_item {
@@ -2812,104 +2803,54 @@ header,
     overflow: hidden;
     text-align: center;
     padding: 15px;
-    width: calc(16.6667% - 20px); /* 6 per row desktop */
+    width: calc(16.6667% - 20px);
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     position: relative;
     transition: transform 0.3s, box-shadow 0.3s;
 }
+.product_item:hover { transform: translateY(-10px); box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
 
-.product_item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
-
-.product_thumb {
-    position: relative;
-    overflow: hidden;
-    border-radius: 8px;
-}
-
-.product_thumb img {
-    width: 100%;
-    height: auto;
-    display: block;
-    transition: transform 0.3s;
-}
-
-.product_item:hover img {
-    transform: scale(1.05);
-}
+.product_thumb { position: relative; overflow: hidden; border-radius: 8px; }
+.product_thumb img { width: 100%; height: auto; display: block; transition: transform 0.3s; }
+.product_item:hover img { transform: scale(1.05); }
 
 /* ===== BADGES ===== */
-.badge {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    padding: 5px 8px;
-    color: #fff;
-    font-size: 12px;
-    border-radius: 4px;
-    font-weight: bold;
-}
-
+.badge { position: absolute; top: 10px; left: 10px; padding: 5px 8px; color: #fff; font-size: 12px; border-radius: 4px; font-weight: bold; }
 .badge.new { background: #28a745; }
 .badge.sale { background: #dc3545; }
+.badge.discount { top: 10px; right: 10px; left: auto; background: #ff5a5f; }
 
 /* ===== QUICK VIEW BUTTON ===== */
 .quick_view {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
+    position: absolute; bottom: 10px; left: 50%;
     transform: translateX(-50%);
-    padding: 6px 12px;
-    background: #007bff;
-    color: #fff;
-    font-size: 13px;
-    border-radius: 4px;
-    opacity: 0;
-    transition: opacity 0.3s;
-    text-decoration: none;
+    padding: 6px 12px; background: #007bff; color: #fff; font-size: 13px;
+    border-radius: 4px; opacity: 0; transition: opacity 0.3s; text-decoration: none;
 }
+.product_item:hover .quick_view { opacity: 1; }
 
-.product_item:hover .quick_view {
-    opacity: 1;
+/* ===== ADD TO CART BUTTON ===== */
+.add_to_cart {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 6px 12px;
+    background: #28a745;
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background 0.3s;
 }
+.add_to_cart:hover { background: #218838; }
 
 /* ===== PRODUCT CONTENT ===== */
-.product_content {
-    padding: 10px 0;
-}
-
-.product_content h3 {
-    font-size: 16px;
-    color: #333;
-    margin: 8px 0 5px;
-}
-
-.product_content p {
-    font-size: 14px;
-    color: #ff5a5f;
-    font-weight: bold;
-    margin: 0;
-}
-
-/* ===== RATING STARS ===== */
-.rating {
-    color: #ffbf00;
-    font-size: 14px;
-    margin-bottom: 5px;
-}
+.product_content { padding: 10px 0; }
+.product_content h3 { font-size: 16px; color: #333; margin: 8px 0 5px; }
+.product_content p { font-size: 14px; color: #ff5a5f; font-weight: bold; margin: 0; }
+.rating { color: #ffbf00; font-size: 14px; margin-bottom: 5px; }
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 991px) {
-    .product_item { width: calc(20% - 20px); } /* 5 per row */
-}
-
-@media (max-width: 767px) {
-    .product_item { width: calc(33.3333% - 20px); } /* 3 per row */
-}
-
-@media (max-width: 575px) {
-    .product_item { width: calc(50% - 15px); } /* 2 per row */
-}
+@media (max-width: 991px) { .product_item { width: calc(20% - 20px); } }
+@media (max-width: 767px) { .product_item { width: calc(33.3333% - 20px); } }
+@media (max-width: 575px) { .product_item { width: calc(50% - 15px); } }
 body {overflow-x: hidden !important;}
