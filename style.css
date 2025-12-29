@@ -2757,7 +2757,7 @@ header,
 }
 
 .header_black .main_menu nav ul li ul.mega_menu > li {
-    width: 28%; /* maintain 3-column layout */
+    width: 30%; /* maintain 3-column layout */
     float: left;
 }
 
@@ -2767,7 +2767,7 @@ header,
 }
 
 .header_black .main_menu nav ul li ul.mega_menu > li ul li a {
-    font-size: 13px !important;
+    font-size: 14px !important;
     margin-bottom: 8px !important;
 }
 
