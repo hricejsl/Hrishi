@@ -2707,25 +2707,33 @@ header,
         font-size: 14px;             /* optional text size */
     }
 }
-/* ==== ALL SUBMENU WIDTH & GAP FIX ==== */
+/* ==== FORCE ALL SUBMENUS WIDTH & GAP FIX ==== */
 .dropdown_links,
 .dropdown_currency,
 .dropdown_language {
-    max-width: 200px !important;   /* box tight */
-    width: auto !important;
-    box-sizing: border-box;
+    max-width: 160px !important;   /* boss, tight box */
+    width: 160px !important;       /* exact width */
+    box-sizing: border-box !important;
+    overflow: hidden !important;
 }
 
 .dropdown_links li,
 .dropdown_currency li,
 .dropdown_language li {
-    line-height: 28px !important;  /* vertical gap tight */
-    padding: 4px 0 !important;     /* gap kam */
+    line-height: 24px !important;
+    padding: 4px 0 !important;
 }
 
 .dropdown_links li a,
 .dropdown_currency li a,
 .dropdown_language li a {
-    font-size: 13px !important;    /* optional, text size tight */
+    font-size: 13px !important;
+}
+
+/* Ensure submenu does not overflow parent */
+.top_links > .dropdown_links,
+.header_top > .dropdown_currency,
+.header_top > .dropdown_language {
+    left: 0 !important;
 }
 body {overflow-x: hidden !important;}
