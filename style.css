@@ -2792,28 +2792,27 @@ header,
 .header_black .dropdown_language {
     transition: all 0.3s ease-in-out !important;
 }
-/* ===== FIBAL PRODUCT GRID FIX ===== */
-.custom-row {
-    display: flex !important;
-    flex-wrap: wrap !important;
+/* ===== FORCE OVERRIDE PRODUCT GRID ===== */
+.product_column3 {
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.custom-col-5 {
-    width: 16.6667% !important; /* Desktop = 6 columns */
-    padding: 0 10px !important;
+.product_column3 .custom-col-5 {
+    width: 16.6667% !important; /* Desktop = 6 */
 }
 
 /* Tablet */
 @media (max-width: 991px) {
-    .custom-col-5 {
-        width: 20% !important; /* 5 columns */
+    .product_column3 .custom-col-5 {
+        width: 20% !important; /* 5 */
     }
 }
 
 /* Mobile */
 @media (max-width: 575px) {
-    .custom-col-5 {
-        width: 25% !important; /* 4 columns */
+    .product_column3 .custom-col-5 {
+        width: 25% !important; /* 4 */
     }
 }
 body {overflow-x: hidden !important;}
