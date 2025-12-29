@@ -2718,3 +2718,16 @@ body {
     padding: 6px 12px;     /* gap kam karo */
     font-size: 13px;       /* optional, chhota text */
 }
+
+/* ==== MOBILE CATEGORY FIX ==== */
+@media (max-width: 767px) {
+    .category_menu,
+    .category_menu ul {
+        overflow: visible !important; /* last option visible rahe */
+        height: auto !important;
+    }
+
+    .category_menu li {
+        display: block !important;   /* saare options dikhe */
+    }
+}
