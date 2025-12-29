@@ -2794,26 +2794,26 @@ header,
 }
 /* ===== FIBAL PRODUCT GRID FIX ===== */
 .custom-row {
-    display: flex;
-    flex-wrap: wrap;
+    display: flex !important;
+    flex-wrap: wrap !important;
 }
 
 .custom-col-5 {
-    width: 16.6667%; /* Desktop = 6 products */
-    padding: 0 10px;
+    width: 16.6667% !important; /* Desktop = 6 columns */
+    padding: 0 10px !important;
 }
 
 /* Tablet */
 @media (max-width: 991px) {
     .custom-col-5 {
-        width: 20%; /* 5 products */
+        width: 20% !important; /* 5 columns */
     }
 }
 
 /* Mobile */
 @media (max-width: 575px) {
     .custom-col-5 {
-        width: 25%; /* 4 products */
+        width: 25% !important; /* 4 columns */
     }
 }
 body {overflow-x: hidden !important;}
