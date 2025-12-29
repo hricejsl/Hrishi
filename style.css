@@ -2703,7 +2703,7 @@ header,
 .header_account ul li a,
 .account_list li a,
 .sub_menu li a {
-    padding: 6px 8px;       /* pehle 12px, ab tight */
+    padding: 4px 8px;       /* pehle 12px, ab tight */
     font-size: 13px;        /* optional, chhota text */
 }
 
