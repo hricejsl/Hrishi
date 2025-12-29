@@ -2815,4 +2815,10 @@ header,
         width: 25% !important; /* 4 */
     }
 }
+/* MOBILE FIX */
+@media (max-width: 575px) {
+    .product_column3 .custom-col-5 {
+        width: 25% !important; /* 4 products per row on mobile */
+    }
+}
 body {overflow-x: hidden !important;}
