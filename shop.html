@@ -428,8 +428,58 @@
             </div>
         </div>
     </div>
+    <!-- Quick View Modal -->
+<div class="modal fade" id="quickview_modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <div class="quickview_content">
+          <div class="quickview_img">
+            <img src="" alt="Product Image" id="quickview_image">
+          </div>
+          <div class="quickview_info">
+            <h3 id="quickview_title"></h3>
+            <p id="quickview_desc"></p>
+            <div class="quickview_price" id="quickview_price"></div>
+            <button class="add_to_cart_modal">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Compare Modal -->
+<div class="modal fade" id="compare_modal" tabindex="-1" role="dialog" aria-labelledby="compareModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Compare Products</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="compare_table" style="display:flex; gap:15px; overflow-x:auto;"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="clear_compare">Clear All</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="compare_modal" class="compare_modal" style="display:none;">
+  <div class="compare_content">
+    <span class="close_compare">&times;</span>
+    <h2>Compare Products</h2>
+    <div class="compare_items">
+      <!-- JS se products add honge yaha -->
+    </div>
+  </div>
+</div>
     <!-- 🔴 EXACT wahi footer paste karo jo index.html me hai -->
-</footer>
 <!-- ================= FOOTER END ================= -->
 
 
