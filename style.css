@@ -2792,4 +2792,28 @@ header,
 .header_black .dropdown_language {
     transition: all 0.3s ease-in-out !important;
 }
+/* ===== FIBAL PRODUCT GRID FIX ===== */
+.custom-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.custom-col-5 {
+    width: 16.6667%; /* Desktop = 6 products */
+    padding: 0 10px;
+}
+
+/* Tablet */
+@media (max-width: 991px) {
+    .custom-col-5 {
+        width: 20%; /* 5 products */
+    }
+}
+
+/* Mobile */
+@media (max-width: 575px) {
+    .custom-col-5 {
+        width: 25%; /* 4 products */
+    }
+}
 body {overflow-x: hidden !important;}
