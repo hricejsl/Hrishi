@@ -2689,18 +2689,6 @@ header,
     width: 100%;
     max-width: 100%;
 }
-
-/* ==== MEGA MENU / SUB MENU FIX ==== */
-.mega_menu,
-.sub_menu,
-.dropdown-menu {
-    max-width: 100vw;
-    box-sizing: border-box;
-}
-
-body {
-    overflow-x: hidden !important;
-}
 /* ==== SUBMENU WIDTH & ITEM GAP FINAL FIX ==== */
 .header_account ul,
 .account_list,
@@ -2731,3 +2719,4 @@ body {
         display: block !important;   /* saare options dikhe */
     }
 }
+body {overflow-x: hidden !important;}
