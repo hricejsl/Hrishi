@@ -2713,7 +2713,7 @@ header,
 .header_black .dropdown_links,
 .header_black .dropdown_currency,
 .header_black .dropdown_language {
-    min-width: 160px !important; /* chhota width */
+    min-width: 120px !important; /* chhota width */
     padding: 8px 12px !important; /* inner gap */
     border-radius: 4px;
 }
@@ -2721,8 +2721,8 @@ header,
 .header_black .dropdown_links li a,
 .header_black .dropdown_currency li a,
 .header_black .dropdown_language li a {
-    font-size: 13px !important;
-    margin-bottom: 6px !important;
+    font-size: 14px !important;
+    margin-bottom: 8px !important;
     text-align: center;
 }
 
@@ -2734,13 +2734,13 @@ header,
 
 /* ---------------- Main Menu Submenu ---------------- */
 .header_black .main_menu nav ul li ul.sub_menu {
-    min-width: 180px !important; /* width reduce */
+    min-width: 120px !important; /* width reduce */
     padding: 10px 15px !important;
     border-radius: 4px;
 }
 
 .header_black .main_menu nav ul li ul.sub_menu li a {
-    font-size: 13px !important;
+    font-size: 14px !important;
     margin-bottom: 8px !important;
     line-height: 18px;
 }
@@ -2751,18 +2751,18 @@ header,
 
 /* ---------------- Mega Menu ---------------- */
 .header_black .main_menu nav ul li ul.mega_menu {
-    min-width: 450px !important; /* reduce large width */
+    min-width: 400px !important; /* reduce large width */
     padding: 15px 20px !important;
     border-radius: 4px;
 }
 
 .header_black .main_menu nav ul li ul.mega_menu > li {
-    width: 33%; /* maintain 3-column layout */
+    width: 31%; /* maintain 3-column layout */
     float: left;
 }
 
 .header_black .main_menu nav ul li ul.mega_menu > li > a {
-    font-size: 13px !important;
+    font-size: 14px !important;
     margin-bottom: 10px !important;
 }
 
