@@ -2701,3 +2701,20 @@ header,
 body {
     overflow-x: hidden !important;
 }
+/* ==== SUBMENU WIDTH PERFECT FIX ==== */
+.header_account ul,
+.account_list,
+.sub_menu,
+.dropdown-menu {
+    max-width: 220px;      /* submenu width set */
+    width: auto;           /* content ke hisaab se adjust ho */
+    box-sizing: border-box;
+}
+
+/* ==== Submenu items spacing tight ==== */
+.header_account ul li a,
+.account_list li a,
+.sub_menu li a {
+    padding: 6px 12px;     /* gap kam karo */
+    font-size: 13px;       /* optional, chhota text */
+}
