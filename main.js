@@ -142,8 +142,8 @@
   window.addEventListener("pageshow", function () {
     $(".mini_cart, .product_item, .mega_menu, .submenu").removeClass("active");
 
-    // Reset all product images zoom
-    $(".product_item img").css("transform", "scale(1)");
+    // Reset all product images transform to allow hover zoom again
+    $(".product_thumb img").css("transform", "");
   });
 
 })(jQuery);
