@@ -37,7 +37,7 @@
     dots: true,
   });
 
-  // ==================== PRODUCT SLIDER ====================
+  // ==================== PRODUCT SLIDERS ====================
   $(".product_column3, .product_row1").slick({
     centerMode: true,
     centerPadding: "0",
@@ -97,7 +97,7 @@
     },
   });
 
-  $(".modal").on("shown.bs.modal", function (e) {
+  $(".modal").on("shown.bs.modal", function () {
     $(".product_navactive").resize();
   });
 
@@ -119,46 +119,31 @@
   });
 
   // ==================== BOSS PRO: PRODUCT BUTTONS TOGGLE ====================
-  $(".product_item").on("click", function (e) {
-    e.stopPropagation(); // prevent hiding
-    $(this).toggleClass("active");
-  });
+  $(document).ready(function () {
+    // Click on product toggle buttons
+    $(".product_item").on("click", function (e) {
+      e.stopPropagation();
 
-  $(document).on("click", function () {
-    $(".product_item").removeClass("active");
-  });
-
-  $(document).ready(function(){
-
-    // Toggle product buttons on click
-    $(".product_item").on("click", function(e){
-        e.stopPropagation();
-
-        if($(this).hasClass("active")){
-            $(this).removeClass("active");
-        } else {
-            $(".product_item").removeClass("active");
-            $(this).addClass("active");
-        }
+      if ($(this).hasClass("active")) {
+        $(this).removeClass("active");
+      } else {
+        $(".product_item").removeClass("active"); // hide others
+        $(this).addClass("active");
+      }
     });
 
     // Click outside hides all
-    $(document).on("click", function(){
-        $(".product_item").removeClass("active");
+    $(document).on("click", function () {
+      $(".product_item").removeClass("active");
     });
+  });
 
-    // Reset on back / forward
-    window.addEventListener("pageshow", function(event){
-        $(".mini_cart, .product_item, .mega_menu, .submenu").removeClass("active");
-    });
-
-});
-
-window.addEventListener("pageshow", function(event) {
-    // Reset mini cart, product buttons, mega menu
+  // ==================== BOSS PRO: RESET ON BACK/FORWARD ====================
+  window.addEventListener("pageshow", function () {
     $(".mini_cart, .product_item, .mega_menu, .submenu").removeClass("active");
 
-    // Reset product image zoom
+    // Reset all product images zoom
     $(".product_item img").css("transform", "scale(1)");
-});
+  });
+
 })(jQuery);
