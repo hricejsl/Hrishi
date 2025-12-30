@@ -325,7 +325,8 @@ ul {
 @media (max-width: 575px) {
     .product_item { width: calc(50% - 15px); } /* 2 per row */
 }
-
+/* ******************* ************* */
+/* footer section */
 .footer_black {
   border-top: 1px solid #2d2d2d;
   padding-top: 67px;
