@@ -130,23 +130,23 @@
 
   // Toggle product buttons on click
 $(".product_item").on("click", function(e){
-    e.stopPropagation(); // prevent document click hiding
+    e.stopPropagation(); // prevent document click
 
-    // Check if this card is already active
+    // toggle this card
     if($(this).hasClass("active")){
-        $(this).removeClass("active"); // remove if active (click again hides)
+        $(this).removeClass("active");
     } else {
         $(".product_item").removeClass("active"); // hide others
-        $(this).addClass("active"); // show this
+        $(this).addClass("active");
     }
 });
 
-// Click outside hides all
+// click outside hides all
 $(document).on("click", function(){
     $(".product_item").removeClass("active");
 });
 
-// Reset on back/forward
+// reset on back/forward
 window.addEventListener("pageshow", function(event){
     $(".mini_cart, .product_item, .mega_menu, .submenu").removeClass("active");
 });
