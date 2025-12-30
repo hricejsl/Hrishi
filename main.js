@@ -128,27 +128,30 @@
     $(".product_item").removeClass("active");
   });
 
-  // Toggle product buttons on click
-$(".product_item").on("click", function(e){
-    e.stopPropagation(); // prevent document click
+  $(document).ready(function(){
 
-    // toggle this card
-    if($(this).hasClass("active")){
-        $(this).removeClass("active");
-    } else {
-        $(".product_item").removeClass("active"); // hide others
-        $(this).addClass("active");
-    }
-});
+    // Toggle product buttons on click
+    $(".product_item").on("click", function(e){
+        e.stopPropagation();
 
-// click outside hides all
-$(document).on("click", function(){
-    $(".product_item").removeClass("active");
-});
+        if($(this).hasClass("active")){
+            $(this).removeClass("active");
+        } else {
+            $(".product_item").removeClass("active");
+            $(this).addClass("active");
+        }
+    });
 
-// reset on back/forward
-window.addEventListener("pageshow", function(event){
-    $(".mini_cart, .product_item, .mega_menu, .submenu").removeClass("active");
+    // Click outside hides all
+    $(document).on("click", function(){
+        $(".product_item").removeClass("active");
+    });
+
+    // Reset on back / forward
+    window.addEventListener("pageshow", function(event){
+        $(".mini_cart, .product_item, .mega_menu, .submenu").removeClass("active");
+    });
+
 });
 
 })(jQuery);
