@@ -6,10 +6,11 @@
   // ==================== NAVBAR CART ====================
   $(".cart_link > a").on("click", function (e) {
     e.stopPropagation();
-    $(".mini_cart").addClass("active");
+    $(".mini_cart").toggleClass("active");
   });
 
-  $(".mini_cart_close > a").on("click", function () {
+  $(".mini_cart_close > a").on("click", function (e) {
+    e.stopPropagation();
     $(".mini_cart").removeClass("active");
   });
 
@@ -63,11 +64,12 @@
     items: 3,
     dots: false,
     margin: 30,
-    navText: ['<i class="ion-chevron-left"></i>', '<i class="ion-chevron-right"></i>'],
-    responsive: { 0: { items: 1 }, 768: { items: 2 }, 992: { items: 3 } },
+    navText: ['<i class="ion-chevron-left"></i>','<i class="ion-chevron-right"></i>'],
+    responsiveClass: true,
+    responsive: {0:{items:1},768:{items:2},992:{items:3}},
   });
 
-  // ==================== PRODUCT NAV ACTIVE (MODAL) ====================
+  // ==================== PRODUCT NAV ACTIVE ====================
   $(".product_navactive").owlCarousel({
     autoplay: false,
     loop: true,
@@ -78,7 +80,8 @@
       '<i class="ion-chevron-left arrow-left"></i>',
       '<i class="ion-chevron-right arrow-right"></i>',
     ],
-    responsive: { 0: { items: 1 }, 250: { items: 2 }, 480: { items: 3 }, 768: { items: 4 } },
+    responsiveClass: true,
+    responsive: {0:{items:1},250:{items:2},480:{items:3},768:{items:4}},
   });
 
   $(".modal").on("shown.bs.modal", function () {
@@ -96,13 +99,16 @@
 
   // ==================== TOOLTIP ====================
   $('[data-toggle="tooltip"]').tooltip();
-  $(".action_links ul li a, .quick_button a").tooltip({ animated: "fade", placement: "top", container: "body" });
+  $(".action_links ul li a, .quick_button a").tooltip({
+    animated: "fade",
+    placement: "top",
+    container: "body",
+  });
 
-  // ==================== PRODUCT CARD TOGGLE ====================
+  // ==================== PRODUCT ITEM TOGGLE ====================
   $(document).ready(function () {
     $(".product_item").on("click", function (e) {
       e.stopPropagation();
-      // toggle only this product
       if ($(this).hasClass("active")) {
         $(this).removeClass("active");
       } else {
@@ -111,23 +117,35 @@
       }
     });
 
-    // Prevent closing when clicking action buttons
-    $(".product_thumb a").on("click", function (e) {
-      e.stopPropagation();
-    });
-
-    // Click outside to close all
+    // Clicking outside closes product items
     $(document).on("click", function () {
       $(".product_item").removeClass("active");
       $(".mini_cart").removeClass("active");
-      $(".mega_menu").removeClass("active");
-      $(".submenu").removeClass("active");
+      $(".mega_menu, .submenu").removeClass("active");
+    });
+
+    // Action buttons inside product should not close toggle
+    $(".wishlist, .compare, .add_to_cart, .quick_view").on("click", function (e) {
+      e.stopPropagation();
+    });
+
+    // Search toggle
+    $(".search_btn > a").on("click", function (e) {
+      e.stopPropagation();
+      $(".dropdown_search").toggleClass("active");
+    });
+
+    // Wishlist toggle
+    $(".wishlist_btn > a").on("click", function (e) {
+      e.stopPropagation();
+      $(".wishlist_dropdown").toggleClass("active");
     });
   });
 
-  // ==================== PAGE SHOW RESET ====================
+  // ==================== RESET ON BACK/FORWARD ====================
   window.addEventListener("pageshow", function () {
-    $(".product_item, .mini_cart, .mega_menu, .submenu").removeClass("active");
+    $(".mini_cart, .product_item, .mega_menu, .submenu, .dropdown_search, .wishlist_dropdown").removeClass("active");
     $(".product_item img").css("transform", "scale(1)");
   });
+
 })(jQuery);
