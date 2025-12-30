@@ -128,18 +128,20 @@
     $(".product_item").removeClass("active");
   });
 
-  // ==================== BOSS PRO: RESET ON BACK/FORWARD ====================
-  window.addEventListener("pageshow", function (event) {
-    // Remove all active classes from mini cart, product buttons, mega menu, submenus
-    $(".mini_cart, .product_item, .mega_menu, .submenu").removeClass("active");
-  });
   // Toggle product buttons on click
 $(".product_item").on("click", function(e){
     e.stopPropagation(); // prevent document click hiding
-    $(this).toggleClass("active");
+
+    // Check if this card is already active
+    if($(this).hasClass("active")){
+        $(this).removeClass("active"); // remove if active (click again hides)
+    } else {
+        $(".product_item").removeClass("active"); // hide others
+        $(this).addClass("active"); // show this
+    }
 });
 
-// Click outside hides buttons
+// Click outside hides all
 $(document).on("click", function(){
     $(".product_item").removeClass("active");
 });
