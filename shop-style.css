@@ -163,6 +163,59 @@ ul {
 .header_black .top_right > ul > li > a:not([href]):not([tabindex]):hover {
   color: #a8741a;
 }
+.header_black .dropdown_language li,
+.header_black .dropdown_currency li,
+.header_black .dropdown_links li {
+  border-bottom: 1px solid #2d2d2d;
+}
+
+.header_black .dropdown_language li a:hover,
+.header_black .dropdown_currency li a:hover,
+.header_black .dropdown_links li a:hover {
+  color: #a8741a;
+}
+
+.header_black .dropdown_links {
+  left: -98%;
+}
+
+.social_icone ul li {
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.social_icone ul li:first-child {
+  margin-left: 0;
+}
+
+.social_icone ul li a {
+  background: #ebebeb;
+  color: #aaaaaa;
+  display: block;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 50%;
+}
+
+.social_icone ul li a:hover {
+  background: #a8741a;
+  color: #ffffff;
+}
+
+.top_right > ul > li {
+  display: inline-block;
+  position: relative;
+  padding-left: 20px;
+  margin-left: 20px;
+}
+
+.top_right > ul > li:hover ul.dropdown_currency {
+  top: 100%;
+  opacity: 1;
+  visibility: visible;
+}
     /* ===== SHOP PRODUCT GRID ===== */
 .product_section {
     padding: 50px 0;
