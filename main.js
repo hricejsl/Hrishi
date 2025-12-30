@@ -3,9 +3,10 @@
 
   new WOW().init();
 
-  // ==================== NAVBAR CART ====================
-  $(".cart_link > a").on("click", function () {
-    $(".mini_cart").addClass("active");
+  // ==================== NAVBAR CART TOGGLE ====================
+  $(".cart_link > a").on("click", function (e) {
+    e.stopPropagation();
+    $(".mini_cart").toggleClass("active");
   });
 
   $(".mini_cart_close > a").on("click", function () {
@@ -116,36 +117,27 @@
     container: "body",
   });
 
-  // ==================== BOSS FIX START ====================
-  
+  // ==================== BOSS PRO: UNIVERSAL TOGGLE ====================
   $(document).ready(function () {
-    // USE EVENT DELEGATION (works even after sliders load)
-    $(document).on("click", ".product_item", function (e) {
+    // Use event delegation for all toggle points
+    $(document).on("click", ".product_item, .mega_menu > li > a, .submenu_toggle", function (e) {
       e.stopPropagation();
-
-      // toggle active class
-      if ($(this).hasClass("active")) {
-        $(this).removeClass("active");
-      } else {
-        $(".product_item").removeClass("active"); // hide others
-        $(this).addClass("active");
-      }
+      $(this).toggleClass("active");
     });
 
-    // Hide when clicking outside
+    // Hide elements on clicking outside where needed
     $(document).on("click", function () {
-      $(".product_item").removeClass("active");
+      // Only hide elements that should hide on outside click
+      $(".mega_menu > li > a.active, .submenu_toggle.active").removeClass("active");
+      // Product_item buttons remain hover controlled, don't force hide
     });
   });
 
-  // ==================== BOSS BACK/FORWARD RESET ====================
+  // ==================== BOSS PRO: RESET ON BACK/FORWARD ====================
   window.addEventListener("pageshow", function () {
-    $(".mini_cart, .product_item, .mega_menu, .submenu").removeClass("active");
-
-    // make sure hover zoom works again
-    $(".product_thumb img").css("transform", "");
+    $(".mini_cart, .mega_menu > li > a, .submenu_toggle").removeClass("active");
+    $(".product_thumb img").css("transform", ""); // reset zoom for hover
+    $(".product_item").removeClass("active"); // reset click toggle
   });
-
-  // ==================== BOSS FIX END ====================
 
 })(jQuery);
