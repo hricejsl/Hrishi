@@ -16,9 +16,7 @@
   function dataBackgroundImage() {
     $("[data-bgimg]").each(function () {
       var bgImgUrl = $(this).data("bgimg");
-      $(this).css({
-        "background-image": "url(" + bgImgUrl + ")",
-      });
+      $(this).css({ "background-image": "url(" + bgImgUrl + ")" });
     });
   }
 
@@ -118,12 +116,14 @@
     container: "body",
   });
 
-  // ==================== BOSS PRO: PRODUCT BUTTONS TOGGLE ====================
+  // ==================== BOSS FIX START ====================
+  
   $(document).ready(function () {
-    // Click on product toggle buttons
-    $(".product_item").on("click", function (e) {
+    // USE EVENT DELEGATION (works even after sliders load)
+    $(document).on("click", ".product_item", function (e) {
       e.stopPropagation();
 
+      // toggle active class
       if ($(this).hasClass("active")) {
         $(this).removeClass("active");
       } else {
@@ -132,18 +132,20 @@
       }
     });
 
-    // Click outside hides all
+    // Hide when clicking outside
     $(document).on("click", function () {
       $(".product_item").removeClass("active");
     });
   });
 
-  // ==================== BOSS PRO: RESET ON BACK/FORWARD ====================
+  // ==================== BOSS BACK/FORWARD RESET ====================
   window.addEventListener("pageshow", function () {
     $(".mini_cart, .product_item, .mega_menu, .submenu").removeClass("active");
 
-    // Reset all product images transform to allow hover zoom again
+    // make sure hover zoom works again
     $(".product_thumb img").css("transform", "");
   });
+
+  // ==================== BOSS FIX END ====================
 
 })(jQuery);
