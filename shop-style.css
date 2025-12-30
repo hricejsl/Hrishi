@@ -922,10 +922,24 @@ ul {
     position: relative;
 }
 
-.product_item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+/* Hover zoom effect */
+.product_item:hover img {
+  transform: scale(1.12);
 }
+
+/* Action buttons (wishlist, compare, add_to_cart, quick view) */
+.product_item .wishlist,
+.product_item .compare,
+.product_item .add_to_cart,
+.product_item .quick_view {
+  position: absolute;
+  opacity: 0;
+  transform: translateX(0) translateY(20px);
+  transition: all 0.4s ease;
+  z-index: 10;
+}
+
+/*
 
 /* IMAGE */
 .product_thumb {
