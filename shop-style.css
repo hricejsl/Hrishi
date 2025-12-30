@@ -1069,6 +1069,14 @@ ul {
     margin-bottom: 8px;
     font-size: 14px;
 }
+/* PRO: click toggle active for product buttons */
+.product_item.active .wishlist,
+.product_item.active .compare,
+.product_item.active .add_to_cart,
+.product_item.active .quick_view {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+}
 /* ******************* ************* */
 /* footer section */
 .footer_black {
