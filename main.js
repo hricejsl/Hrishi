@@ -133,5 +133,20 @@
     // Remove all active classes from mini cart, product buttons, mega menu, submenus
     $(".mini_cart, .product_item, .mega_menu, .submenu").removeClass("active");
   });
+  // Toggle product buttons on click
+$(".product_item").on("click", function(e){
+    e.stopPropagation(); // prevent document click hiding
+    $(this).toggleClass("active");
+});
+
+// Click outside hides buttons
+$(document).on("click", function(){
+    $(".product_item").removeClass("active");
+});
+
+// Reset on back/forward
+window.addEventListener("pageshow", function(event){
+    $(".mini_cart, .product_item, .mega_menu, .submenu").removeClass("active");
+});
 
 })(jQuery);
