@@ -3,68 +3,38 @@
 
   new WOW().init();
 
-  // ==================== BACKGROUND IMAGE ====================
-  function dataBackgroundImage() {
-    $("[data-bgimg]").each(function () {
-      var bgImgUrl = $(this).data("bgimg");
-      $(this).css({ "background-image": "url(" + bgImgUrl + ")" });
-    });
-  }
-  $(window).on("load", function () { dataBackgroundImage(); });
-
-  // ==================== NAVBAR CART TOGGLE ====================
+  // ==================== NAVBAR CART ====================
   $(".cart_link > a").on("click", function (e) {
     e.stopPropagation();
     $(".mini_cart").toggleClass("active");
   });
 
-  $(".mini_cart_close > a").on("click", function () {
+  $(".mini_cart_close > a").on("click", function (e) {
+    e.stopPropagation();
     $(".mini_cart").removeClass("active");
   });
 
   // ==================== SEARCH TOGGLE ====================
-  $(".search_toggle").on("click", function (e) {
+  $(".search_btn > a").on("click", function (e) {
     e.stopPropagation();
-    $(".search_box").toggleClass("active");
+    $(".dropdown_search").toggleClass("active");
   });
 
-  // ==================== MEGA MENU & SUBMENU TOGGLE ====================
-  $(".mega_menu > li > a").on("click", function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    var $this = $(this);
-    $this.parent().siblings().find("a").removeClass("active");
-    $this.toggleClass("active");
+  // ==================== BACKGROUND IMAGE ====================
+  function dataBackgroundImage() {
+    $("[data-bgimg]").each(function () {
+      var bgImgUrl = $(this).data("bgimg");
+      $(this).css({
+        "background-image": "url(" + bgImgUrl + ")",
+      });
+    });
+  }
+
+  $(window).on("load", function () {
+    dataBackgroundImage();
   });
 
-  $(".submenu_toggle").on("click", function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    $(this).toggleClass("active");
-    $(this).siblings(".submenu").slideToggle(200);
-  });
-
-  // ==================== PRODUCT BUTTONS TOGGLE ====================
-  $(document).on("click", ".product_item", function (e) {
-    e.stopPropagation();
-    var $card = $(this);
-    $card.toggleClass("active");
-  });
-
-  // Prevent buttons inside product from closing the toggle
-  $(document).on("click", ".product_item .wishlist, .product_item .compare, .product_item .add_to_cart, .product_item .quick_view", function (e) {
-    e.stopPropagation();
-  });
-
-  // ==================== CLICK OUTSIDE HANDLER ====================
-  $(document).on("click", function () {
-    // Hide mega menu / submenu / search / mini cart on outside click
-    $(".mega_menu > li > a.active, .submenu_toggle.active, .search_box.active, .mini_cart.active").removeClass("active");
-    $(".submenu").slideUp(200);
-    // Product buttons remain controlled by hover + click toggle
-  });
-
-  // ==================== SLIDERS / CAROUSEL ====================
+  // ==================== SLIDER CAROUSEL ====================
   $(".slider_area").owlCarousel({
     animateOut: "fadeOut",
     autoplay: true,
@@ -75,14 +45,17 @@
     dots: true,
   });
 
+  // ==================== PRODUCT SLIDERS ====================
   $(".product_column3, .product_row1").slick({
     centerMode: true,
     centerPadding: "0",
     slidesToShow: 5,
     arrows: true,
     rows: 2,
-    prevArrow: '<button class="prev_arrow"><i class="ion-chevron-left"></i></button>',
-    nextArrow: '<button class="next_arrow"><i class="ion-chevron-right"></i></button>',
+    prevArrow:
+      '<button class="prev_arrow"><i class="ion-chevron-left"></i></button>',
+    nextArrow:
+      '<button class="next_arrow"><i class="ion-chevron-right"></i></button>',
     responsive: [
       { breakpoint: 400, settings: { slidesToShow: 1, slidesToScroll: 1 } },
       { breakpoint: 768, settings: { slidesToShow: 2, slidesToScroll: 2 } },
@@ -91,6 +64,7 @@
     ],
   });
 
+  // ==================== BLOG CAROUSEL ====================
   $(".blog_column3").owlCarousel({
     autoplay: true,
     loop: true,
@@ -104,18 +78,31 @@
       '<i class="ion-chevron-right"></i>',
     ],
     responsiveClass: true,
-    responsive: { 0: { items: 1 }, 768: { items: 2 }, 992: { items: 3 } },
+    responsive: {
+      0: { items: 1 },
+      768: { items: 2 },
+      992: { items: 3 },
+    },
   });
 
+  // ==================== PRODUCT NAV ACTIVE ====================
   $(".product_navactive").owlCarousel({
     autoplay: false,
     loop: true,
     nav: true,
     items: 4,
     dots: false,
-    navText: ['<i class="ion-chevron-left arrow-left"></i>', '<i class="ion-chevron-right arrow-right"></i>'],
+    navText: [
+      '<i class="ion-chevron-left arrow-left"></i>',
+      '<i class="ion-chevron-right arrow-right"></i>',
+    ],
     responsiveClass: true,
-    responsive: { 0: { items: 1 }, 250: { items: 2 }, 480: { items: 3 }, 768: { items: 4 } },
+    responsive: {
+      0: { items: 1 },
+      250: { items: 2 },
+      480: { items: 3 },
+      768: { items: 4 },
+    },
   });
 
   $(".modal").on("shown.bs.modal", function () {
@@ -139,12 +126,52 @@
     container: "body",
   });
 
-  // ==================== BACK/FORWARD RESET ====================
-  window.addEventListener("pageshow", function () {
-    $(".mini_cart, .mega_menu > li > a, .submenu_toggle, .search_box").removeClass("active");
-    $(".submenu").slideUp(0);
-    $(".product_thumb img").css("transform", "");
-    $(".product_item").removeClass("active");
+  // ==================== PRODUCT CARD TOGGLE ====================
+  $(document).ready(function () {
+    $(".product_item").on("click", function (e) {
+      e.stopPropagation();
+
+      var $this = $(this);
+      if ($this.hasClass("active")) {
+        $this.removeClass("active");
+      } else {
+        $(".product_item").removeClass("active");
+        $this.addClass("active");
+      }
+    });
+
+    // Click outside: hide all toggles
+    $(document).on("click", function () {
+      $(".product_item, .mini_cart, .dropdown_search, .mega_menu, .submenu").removeClass(
+        "active"
+      );
+    });
+
+    // Prevent clicks inside buttons from closing the card
+    $(".product_thumb a").on("click", function (e) {
+      e.stopPropagation();
+    });
+
+    // Wishlist, Compare, Add to Cart, Quick View click simulation
+    $(".wishlist").on("click", function () {
+      alert("Wishlist clicked!");
+    });
+    $(".compare").on("click", function () {
+      alert("Compare clicked!");
+    });
+    $(".add_to_cart").on("click", function () {
+      alert("Added to Cart!");
+    });
+    $(".quick_view").on("click", function () {
+      $("#quickview_modal").modal("show");
+    });
   });
 
+  // ==================== RESET ON BACK/FORWARD ====================
+  window.addEventListener("pageshow", function () {
+    $(".mini_cart, .product_item, .dropdown_search, .mega_menu, .submenu").removeClass(
+      "active"
+    );
+    $(".product_item img").css("transform", "scale(1)");
+  });
 })(jQuery);
