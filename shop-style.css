@@ -1069,13 +1069,22 @@ ul {
     margin-bottom: 8px;
     font-size: 14px;
 }
-/* PRO: click toggle active for product buttons */
+/* Hover effect */
+.product_item:hover .wishlist,
+.product_item:hover .compare,
+.product_item:hover .add_to_cart,
+.product_item:hover .quick_view {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+}
+
+/* Active class for click toggle */
 .product_item.active .wishlist,
 .product_item.active .compare,
 .product_item.active .add_to_cart,
 .product_item.active .quick_view {
-    opacity: 1;
-    transform: translateX(0) translateY(0);
+    opacity: 1 !important;
+    transform: translateX(0) translateY(0) !important;
 }
 /* ******************* ************* */
 /* footer section */
