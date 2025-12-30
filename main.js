@@ -154,4 +154,11 @@
 
 });
 
+window.addEventListener("pageshow", function(event) {
+    // Reset mini cart, product buttons, mega menu
+    $(".mini_cart, .product_item, .mega_menu, .submenu").removeClass("active");
+
+    // Reset product image zoom
+    $(".product_item img").css("transform", "scale(1)");
+});
 })(jQuery);
