@@ -3,7 +3,7 @@
 
   new WOW().init();
 
-  //navbar cart
+  // ==================== NAVBAR CART ====================
   $(".cart_link > a").on("click", function () {
     $(".mini_cart").addClass("active");
   });
@@ -12,12 +12,12 @@
     $(".mini_cart").removeClass("active");
   });
 
-  // background image
+  // ==================== BACKGROUND IMAGE ====================
   function dataBackgroundImage() {
     $("[data-bgimg]").each(function () {
       var bgImgUrl = $(this).data("bgimg");
       $(this).css({
-        "background-image": "url(" + bgImgUrl + ")", // concatenation
+        "background-image": "url(" + bgImgUrl + ")",
       });
     });
   }
@@ -26,7 +26,7 @@
     dataBackgroundImage();
   });
 
-  //for carousel slider of the slider section
+  // ==================== SLIDER CAROUSEL ====================
   $(".slider_area").owlCarousel({
     animateOut: "fadeOut",
     autoplay: true,
@@ -37,8 +37,8 @@
     dots: true,
   });
 
-  //product column responsive
-  $(".product_column3").slick({
+  // ==================== PRODUCT SLIDER ====================
+  $(".product_column3, .product_row1").slick({
     centerMode: true,
     centerPadding: "0",
     slidesToShow: 5,
@@ -49,90 +49,14 @@
     nextArrow:
       '<button class="next_arrow"><i class="ion-chevron-right"></i></button>',
     responsive: [
-      {
-        breakpoints: 400,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoints: 768,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-        },
-      },
-      {
-        breakpoints: 992,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-        },
-      },
-      {
-        breakpoints: 1200,
-        settings: {
-          slidesToShow: 4,
-          slidesToScroll: 4,
-        },
-      },
+      { breakpoint: 400, settings: { slidesToShow: 1, slidesToScroll: 1 } },
+      { breakpoint: 768, settings: { slidesToShow: 2, slidesToScroll: 2 } },
+      { breakpoint: 992, settings: { slidesToShow: 3, slidesToScroll: 3 } },
+      { breakpoint: 1200, settings: { slidesToShow: 4, slidesToScroll: 4 } },
     ],
   });
 
-  //for tooltip
-  $('[data-toggle="tooltip"]').tooltip();
-
-  //tooltip active
-  $(".action_links ul li a, .quick_button a").tooltip({
-    animated: "fade",
-    placement: "top",
-    container: "body",
-  });
-
-  //product row activation responsive
-  $(".product_row1").slick({
-    centerMode: true,
-    centerPadding: "0",
-    slidesToShow: 5,
-    arrows: true,
-    prevArrow:
-      '<button class="prev_arrow"><i class="ion-chevron-left"></i></button>',
-    nextArrow:
-      '<button class="next_arrow"><i class="ion-chevron-right"></i></button>',
-    responsive: [
-      {
-        breakpoints: 400,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoints: 768,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-        },
-      },
-      {
-        breakpoints: 992,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-        },
-      },
-      {
-        breakpoints: 1200,
-        settings: {
-          slidesToShow: 4,
-          slidesToScroll: 4,
-        },
-      },
-    ],
-  });
-
-  // blog section
+  // ==================== BLOG CAROUSEL ====================
   $(".blog_column3").owlCarousel({
     autoplay: true,
     loop: true,
@@ -147,19 +71,13 @@
     ],
     responsiveClass: true,
     responsive: {
-      0: {
-        items: 1,
-      },
-      768: {
-        items: 2,
-      },
-      992: {
-        items: 3,
-      },
+      0: { items: 1 },
+      768: { items: 2 },
+      992: { items: 3 },
     },
   });
 
-  //navactive responsive
+  // ==================== PRODUCT NAV ACTIVE ====================
   $(".product_navactive").owlCarousel({
     autoplay: false,
     loop: true,
@@ -172,18 +90,10 @@
     ],
     responsiveClass: true,
     responsive: {
-      0: {
-        items: 1,
-      },
-      250: {
-        items: 2,
-      },
-      480: {
-        items: 3,
-      },
-      768: {
-        items: 4,
-      },
+      0: { items: 1 },
+      250: { items: 2 },
+      480: { items: 3 },
+      768: { items: 4 },
     },
   });
 
@@ -199,4 +109,29 @@
     $(".product-details-large .tab-pane").removeClass("active show");
     $(".product-details-large " + $href).addClass("active show");
   });
+
+  // ==================== TOOLTIP ====================
+  $('[data-toggle="tooltip"]').tooltip();
+  $(".action_links ul li a, .quick_button a").tooltip({
+    animated: "fade",
+    placement: "top",
+    container: "body",
+  });
+
+  // ==================== BOSS PRO: PRODUCT BUTTONS TOGGLE ====================
+  $(".product_item").on("click", function (e) {
+    e.stopPropagation(); // prevent hiding
+    $(this).toggleClass("active");
+  });
+
+  $(document).on("click", function () {
+    $(".product_item").removeClass("active");
+  });
+
+  // ==================== BOSS PRO: RESET ON BACK/FORWARD ====================
+  window.addEventListener("pageshow", function (event) {
+    // Remove all active classes from mini cart, product buttons, mega menu, submenus
+    $(".mini_cart, .product_item, .mega_menu, .submenu").removeClass("active");
+  });
+
 })(jQuery);
