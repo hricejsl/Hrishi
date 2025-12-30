@@ -185,151 +185,122 @@
             </div>
         </div>
         <!-- slider section ends -->
-        /* ===============================
-   LUXURY PRODUCT SECTION
-================================ */
+<!-- ================= PRODUCT SECTION ================= -->
+<section class="product_section">
+    <div class="container">
+        <div class="product_grid">
 
-.product_section {
-    padding: 80px 0;
-    background: #0e0e0e;
-}
+            <!-- PRODUCT 1 -->
+            <div class="product_item">
+                <div class="product_thumb">
+                    <img src="images/product/1.jpg" alt="Gold Ring">
+                    <span class="badge new">New</span>
 
-.product_grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 30px;
-}
+                    <a href="#" class="wishlist">❤</a>
+                    <a href="#" class="compare">⇄</a>
 
-/* PRODUCT CARD */
-.product_item {
-    background: #151515;
-    border-radius: 16px;
-    overflow: hidden;
-    transition: all 0.4s ease;
-    position: relative;
-}
+                    <a href="#" class="quick_view">Quick View</a>
+                </div>
+                <div class="product_content">
+                    <div class="rating">★★★★☆</div>
+                    <h3>Gold Ring</h3>
+                    <p>Rs. 44,015</p>
+                </div>
+            </div>
 
-.product_item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 25px 60px rgba(0,0,0,0.6);
-}
+            <!-- PRODUCT 2 -->
+            <div class="product_item">
+                <div class="product_thumb">
+                    <img src="images/product/2.jpg" alt="Diamond Earrings">
+                    <span class="badge sale">Sale</span>
 
-/* IMAGE */
-.product_thumb {
-    position: relative;
-    overflow: hidden;
-}
+                    <a href="#" class="wishlist">❤</a>
+                    <a href="#" class="compare">⇄</a>
 
-.product_thumb img {
-    width: 100%;
-    height: 320px;
-    object-fit: cover;
-    transition: transform 0.6s ease;
-}
+                    <a href="#" class="quick_view">Quick View</a>
+                </div>
+                <div class="product_content">
+                    <div class="rating">★★★★★</div>
+                    <h3>Diamond Earrings</h3>
+                    <p>Rs. 28,000</p>
+                </div>
+            </div>
 
-.product_item:hover .product_thumb img {
-    transform: scale(1.1);
-}
+            <!-- PRODUCT 3 -->
+            <div class="product_item">
+                <div class="product_thumb">
+                    <img src="images/product/3.jpg" alt="Gold Necklace">
+                    <span class="badge discount">-15%</span>
 
-/* BADGES */
-.badge {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    padding: 6px 14px;
-    font-size: 12px;
-    border-radius: 20px;
-    color: #000;
-    background: #d4af37;
-    font-weight: 600;
-    text-transform: uppercase;
-}
+                    <a href="#" class="wishlist">❤</a>
+                    <a href="#" class="compare">⇄</a>
 
-.badge.sale {
-    background: #ff4d4d;
-    color: #fff;
-}
+                    <a href="#" class="quick_view">Quick View</a>
+                </div>
+                <div class="product_content">
+                    <div class="rating">★★★★☆</div>
+                    <h3>Gold Necklace</h3>
+                    <p>Rs. 47,000</p>
+                </div>
+            </div>
 
-.badge.discount {
-    background: #000;
-    color: #d4af37;
-}
+            <!-- PRODUCT 4 -->
+            <div class="product_item">
+                <div class="product_thumb">
+                    <img src="images/product/4.jpg" alt="Engagement Ring">
+                    <span class="badge new">New</span>
 
-/* QUICK VIEW */
-.quick_view {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%) translateY(20px);
-    background: rgba(0,0,0,0.75);
-    color: #fff;
-    padding: 10px 22px;
-    border-radius: 30px;
-    font-size: 14px;
-    opacity: 0;
-    transition: 0.4s;
-}
+                    <a href="#" class="wishlist">❤</a>
+                    <a href="#" class="compare">⇄</a>
 
-.product_item:hover .quick_view {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-}
+                    <a href="#" class="quick_view">Quick View</a>
+                </div>
+                <div class="product_content">
+                    <div class="rating">★★★☆☆</div>
+                    <h3>Engagement Ring</h3>
+                    <p>Rs. 14,000</p>
+                </div>
+            </div>
 
-/* WISHLIST & COMPARE (READY CSS) */
-.product_thumb .wishlist,
-.product_thumb .compare {
-    position: absolute;
-    right: 15px;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: rgba(0,0,0,0.7);
-    color: #d4af37;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    opacity: 0;
-    transition: 0.3s;
-}
+            <!-- PRODUCT 5 -->
+            <div class="product_item">
+                <div class="product_thumb">
+                    <img src="images/product/5.jpg" alt="Pendant">
+                    <span class="badge sale">Sale</span>
 
-.product_thumb .wishlist {
-    top: 15px;
-}
+                    <a href="#" class="wishlist">❤</a>
+                    <a href="#" class="compare">⇄</a>
 
-.product_thumb .compare {
-    top: 60px;
-}
+                    <a href="#" class="quick_view">Quick View</a>
+                </div>
+                <div class="product_content">
+                    <div class="rating">★★★★☆</div>
+                    <h3>Pendant</h3>
+                    <p>Rs. 6,500</p>
+                </div>
+            </div>
 
-.product_item:hover .wishlist,
-.product_item:hover .compare {
-    opacity: 1;
-}
+            <!-- PRODUCT 6 -->
+            <div class="product_item">
+                <div class="product_thumb">
+                    <img src="images/product/6.jpg" alt="Bracelet">
 
-/* CONTENT */
-.product_content {
-    padding: 22px;
-    text-align: center;
-}
+                    <a href="#" class="wishlist">❤</a>
+                    <a href="#" class="compare">⇄</a>
 
-.product_content h3 {
-    color: #fff;
-    font-size: 18px;
-    font-weight: 500;
-    margin-bottom: 8px;
-}
+                    <a href="#" class="quick_view">Quick View</a>
+                </div>
+                <div class="product_content">
+                    <div class="rating">★★★★★</div>
+                    <h3>Bracelet</h3>
+                    <p>Rs. 8,500</p>
+                </div>
+            </div>
 
-.product_content p {
-    color: #d4af37;
-    font-size: 16px;
-    font-weight: 600;
-}
-
-.rating {
-    color: #f5c542;
-    margin-bottom: 8px;
-    font-size: 14px;
-}
+        </div>
+    </div>
+</section>
+<!-- ================= PRODUCT SECTION END ================= -->
                         
 <!-- ================= FOOTER (COPY FROM INDEX) ================= -->
 <footer class="footer_widgets footer_black">
