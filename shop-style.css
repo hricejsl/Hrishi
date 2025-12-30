@@ -1069,29 +1069,23 @@ ul {
     margin-bottom: 8px;
     font-size: 14px;
 }
-/* Remove hover showing buttons */
-.product_item:hover .wishlist,
-.product_item:hover .compare,
-.product_item:hover .add_to_cart,
-.product_item:hover .quick_view {
-    opacity: 0; /* hover no longer overrides click */
-}
-
-/* Active class shows buttons */
+/* Active state: click toggle */
 .product_item.active .wishlist,
 .product_item.active .compare,
 .product_item.active .add_to_cart,
 .product_item.active .quick_view {
-    opacity: 1 !important;
-    transform: translateX(0) translateY(0) !important;
-}
-.product_item img {
-    transition: transform 0.6s ease;
+  opacity: 1 !important;
+  transform: translateX(0) translateY(0) !important;
 }
 
-.product_item:hover img {
-    transform: scale(1.12);
-}
+/* Optional: Hover also shows buttons */
+.product_item:hover .wishlist,
+.product_item:hover .compare,
+.product_item:hover .add_to_cart,
+.product_item:hover .quick_view {
+  opacity: 1;
+  transform: translateX(0) translateY(0);
+
 /* ******************* ************* */
 /* footer section */
 .footer_black {
