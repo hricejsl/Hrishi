@@ -3,6 +3,23 @@
 
   new WOW().init();
 
+  // ==================== NAVBAR CART ====================
+  $(".cart_link > a").on("click", function (e) {
+    e.stopPropagation();
+    $(".mini_cart").addClass("active");
+  });
+
+  $(".mini_cart_close > a").on("click", function (e) {
+    e.stopPropagation();
+    $(".mini_cart").removeClass("active");
+  });
+
+  // ==================== SEARCH DROPDOWN ====================
+  $(".search_btn > a").on("click", function (e) {
+    e.stopPropagation();
+    $(".dropdown_search").toggleClass("active");
+  });
+
   // ==================== BACKGROUND IMAGE ====================
   function dataBackgroundImage() {
     $("[data-bgimg]").each(function () {
@@ -17,7 +34,7 @@
     dataBackgroundImage();
   });
 
-  // ==================== SLIDERS ====================
+  // ==================== SLIDER CAROUSEL ====================
   $(".slider_area").owlCarousel({
     animateOut: "fadeOut",
     autoplay: true,
@@ -28,6 +45,7 @@
     dots: true,
   });
 
+  // ==================== PRODUCT SLIDERS ====================
   $(".product_column3, .product_row1").slick({
     centerMode: true,
     centerPadding: "0",
@@ -46,6 +64,7 @@
     ],
   });
 
+  // ==================== BLOG CAROUSEL ====================
   $(".blog_column3").owlCarousel({
     autoplay: true,
     loop: true,
@@ -66,6 +85,7 @@
     },
   });
 
+  // ==================== PRODUCT NAV ACTIVE ====================
   $(".product_navactive").owlCarousel({
     autoplay: false,
     loop: true,
@@ -106,84 +126,53 @@
     container: "body",
   });
 
-  // ==================== HEADER TOGGLES ====================
+  // ==================== PRODUCT CARD TOGGLE ====================
   $(document).ready(function () {
-    // Cart toggle
-    $(".cart_link > a").on("click", function (e) {
-      e.stopPropagation();
-      $(".mini_cart").toggleClass("active");
-      $(".dropdown_search, .wishlist_btn_active, .mega_menu, .product_item").removeClass(
-        "active"
-      );
-    });
-
-    $(".mini_cart_close > a").on("click", function (e) {
-      e.stopPropagation();
-      $(".mini_cart").removeClass("active");
-    });
-
-    // Search toggle
-    $(".search_btn > a").on("click", function (e) {
-      e.stopPropagation();
-      $(".dropdown_search").toggleClass("active");
-      $(".mini_cart, .wishlist_btn_active, .mega_menu, .product_item").removeClass(
-        "active"
-      );
-    });
-
-    // Wishlist toggle in header
-    $(".wishlist_btn > a").on("click", function (e) {
-      e.stopPropagation();
-      $(".wishlist_btn_active").toggleClass("active");
-      $(".mini_cart, .dropdown_search, .mega_menu, .product_item").removeClass(
-        "active"
-      );
-    });
-
-    // Mega menu toggle (if any)
-    $(".mega_menu_parent > a").on("click", function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      var $parent = $(this).siblings(".mega_menu");
-      $(".mega_menu").not($parent).removeClass("active");
-      $parent.toggleClass("active");
-      $(".mini_cart, .dropdown_search, .wishlist_btn_active, .product_item").removeClass(
-        "active"
-      );
-    });
-
-    // ==================== PRODUCT CARD TOGGLE ====================
     $(".product_item").on("click", function (e) {
       e.stopPropagation();
+
+      // if same product clicked, toggle
       if ($(this).hasClass("active")) {
         $(this).removeClass("active");
       } else {
-        $(".product_item").removeClass("active"); // hide others
+        // close all others first
+        $(".product_item").removeClass("active");
         $(this).addClass("active");
       }
     });
 
-    // Click outside closes all toggles
+    // Click outside closes all
     $(document).on("click", function () {
-      $(".mini_cart, .dropdown_search, .wishlist_btn_active, .mega_menu, .product_item").removeClass(
-        "active"
-      );
+      $(".product_item").removeClass("active");
+      $(".dropdown_search").removeClass("active");
+      $(".mini_cart").removeClass("active");
+      $(".mega_menu, .submenu").removeClass("active");
     });
 
-    // Prevent product action buttons from closing toggle
-    $(".product_item .wishlist, .product_item .compare, .product_item .add_to_cart, .product_item .quick_view").on(
-      "click",
-      function (e) {
-        e.stopPropagation();
-      }
-    );
+    // Prevent buttons inside product from closing
+    $(".wishlist, .compare, .add_to_cart, .quick_view").on("click", function (e) {
+      e.stopPropagation();
+    });
   });
 
-  // ==================== RESET ON BACK/FORWARD ====================
+  // ==================== MEGA MENU / SUBMENU TOGGLE ====================
+  $(".mega_menu > li > a").on("click", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    var parentLi = $(this).parent("li");
+
+    if (parentLi.hasClass("active")) {
+      parentLi.removeClass("active");
+    } else {
+      $(".mega_menu > li").removeClass("active");
+      parentLi.addClass("active");
+    }
+  });
+
+  // ==================== PAGESHOW RESET ====================
   window.addEventListener("pageshow", function () {
-    $(".mini_cart, .dropdown_search, .wishlist_btn_active, .mega_menu, .product_item").removeClass(
-      "active"
-    );
+    $(".mini_cart, .product_item, .mega_menu, .submenu, .dropdown_search").removeClass("active");
     $(".product_item img").css("transform", "scale(1)");
   });
+
 })(jQuery);
